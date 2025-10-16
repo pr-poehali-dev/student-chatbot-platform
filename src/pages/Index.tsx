@@ -134,17 +134,52 @@ const Index = () => {
     }
   ];
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(https://cdn.poehali.dev/files/289dddc2-d94b-40d5-88f7-cd7f4a221249.jpg)'}}>
+      <nav className="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+        <div className="container mx-auto px-4 py-4 max-w-7xl">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img src="https://cdn.poehali.dev/files/aba44430-2f37-4356-9eb3-104062be1687.png" alt="ЗаЦени" className="w-12 h-12" />
+              <img src="https://cdn.poehali.dev/files/ec1980cf-86dd-4311-8bd5-05bede64c7e1.png" alt="ЗаЦени" className="h-8" />
+            </div>
+            <div className="hidden md:flex items-center gap-8">
+              <button onClick={() => scrollToSection('functions')} className="text-white hover:text-white/80 transition-colors font-medium">
+                Функции
+              </button>
+              <button onClick={() => scrollToSection('benefits')} className="text-white hover:text-white/80 transition-colors font-medium">
+                Преимущества
+              </button>
+              <button onClick={() => scrollToSection('stickers')} className="text-white hover:text-white/80 transition-colors font-medium">
+                Стикеры
+              </button>
+              <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-white/80 transition-colors font-medium">
+                Отзывы
+              </button>
+              <Button size="sm" className="bg-white text-purple-600 hover:bg-purple-50 font-bold rounded-full">
+                Открыть бота
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       <div className="container mx-auto px-4 py-8 max-w-7xl">
-        
         <section className="text-center py-16 md:py-24 animate-fade-in">
           <div className="inline-block mb-6 px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
             <span className="text-white font-bold text-sm tracking-wider">ЭКОСИСТЕМА СЕРВИСОВ ДЛЯ СТУДЕНТОВ</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black mb-6 text-white leading-tight drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl font-black mb-4 text-white leading-tight drop-shadow-lg">
             Самая трудная сессия<br />— это ЖИЗНЬ
           </h1>
+          <p className="text-2xl md:text-3xl font-bold text-white mb-6 drop-shadow-md italic">
+            Студентам от студентов!
+          </p>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-md">
             Телеграм-бот, который упростит твою студенческую жизнь
           </p>
@@ -157,7 +192,7 @@ const Index = () => {
           </Button>
         </section>
 
-        <section className="py-16 animate-fade-in" style={{animationDelay: '0.2s'}}>
+        <section id="functions" className="py-16 animate-fade-in" style={{animationDelay: '0.2s'}}>
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-white drop-shadow-lg">
               Функции бота
@@ -183,7 +218,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-16 animate-fade-in" style={{animationDelay: '0.4s'}}>
+        <section id="benefits" className="py-16 animate-fade-in" style={{animationDelay: '0.4s'}}>
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-white drop-shadow-lg">
               Преимущества
@@ -207,52 +242,68 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-16 animate-fade-in" style={{animationDelay: '0.6s'}}>
+        <section id="stickers" className="py-16 animate-fade-in" style={{animationDelay: '0.6s'}}>
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-white">
+            <h2 className="text-4xl md:text-5xl font-black mb-4 text-white drop-shadow-lg">
               Уникальные стикеры
             </h2>
             <p className="text-lg text-white/90">
               Выражай эмоции студенческой жизни через крутые стикеры!
             </p>
           </div>
-          <div className="relative max-w-4xl mx-auto h-[600px] flex items-center justify-center">
-            <div className="relative z-10">
-              <img 
-                src="https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/4b9e728c-c91e-42c0-bdb1-7444907e04cb.jpg"
-                alt="Телефон"
-                className="w-64 md:w-80 h-auto drop-shadow-2xl"
-              />
-            </div>
-            {stickers.map((sticker, index) => (
-              <div 
-                key={index}
-                className={`absolute ${sticker.position} ${sticker.size} animate-scale-in hover:scale-125 transition-transform duration-300 cursor-pointer z-20`}
-                style={{animationDelay: `${0.15 * index}s`}}
-              >
-                <img 
-                  src={sticker.url} 
-                  alt={sticker.name}
-                  className="w-full h-auto drop-shadow-xl"
-                />
+          <div className="max-w-5xl mx-auto">
+            <Card className="bg-white/90 backdrop-blur-sm p-8 md:p-12 border-2 border-purple-200">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="relative flex items-center justify-center h-[400px]">
+                  {stickers.map((sticker, index) => (
+                    <div 
+                      key={index}
+                      className={`absolute ${sticker.position} ${sticker.size} animate-scale-in hover:scale-125 transition-transform duration-300 cursor-pointer`}
+                      style={{animationDelay: `${0.15 * index}s`}}
+                    >
+                      <img 
+                        src={sticker.url} 
+                        alt={sticker.name}
+                        className="w-full h-auto drop-shadow-xl"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <h3 className="text-3xl font-black mb-4 text-gray-800">
+                    Пак эксклюзивных стикеров
+                  </h3>
+                  <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+                    Более <span className="font-bold text-purple-600">50 уникальных стикеров</span>, которые передают настроение студенческой жизни! От радости выпускного до ночных бдений перед экзаменом.
+                  </p>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={20} className="text-purple-600 mt-1 flex-shrink-0" />
+                      <span className="text-gray-700">Эксклюзивный дизайн от студентов для студентов</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={20} className="text-purple-600 mt-1 flex-shrink-0" />
+                      <span className="text-gray-700">Постоянное пополнение коллекции новыми стикерами</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={20} className="text-purple-600 mt-1 flex-shrink-0" />
+                      <span className="text-gray-700">Доступны бесплатно прямо в боте</span>
+                    </li>
+                  </ul>
+                  <Button 
+                    size="lg"
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full md:w-auto"
+                  >
+                    <Icon name="Download" size={24} className="mr-2" />
+                    Получить стикеры в боте
+                  </Button>
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <p className="text-xl text-white/90 mb-6 max-w-2xl mx-auto">
-              Более 50 эксклюзивных стикеров доступны в боте! Скачай пак и делись настроением в чатах
-            </p>
-            <Button 
-              size="lg"
-              className="bg-white text-purple-600 hover:bg-purple-50 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-bold"
-            >
-              <Icon name="Sticker" size={24} className="mr-2" />
-              Скачать стикеры
-            </Button>
+            </Card>
           </div>
         </section>
 
-        <section className="py-16 animate-fade-in" style={{animationDelay: '0.7s'}}>
+        <section id="reviews" className="py-16 animate-fade-in" style={{animationDelay: '0.7s'}}>
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-white">
               Отзывы студентов
@@ -281,7 +332,34 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-16 text-center animate-fade-in" style={{animationDelay: '0.8s'}}>
+        <section className="py-16 animate-fade-in" style={{animationDelay: '0.8s'}}>
+          <Card className="bg-white/95 backdrop-blur-sm p-8 md:p-12 border-2 border-purple-200 max-w-5xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-black mb-4 text-gray-800">
+                О проекте
+              </h2>
+            </div>
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <p className="text-base md:text-lg">
+                Проект создан при поддержке Федерального государственного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-8 pt-6">
+                <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-md">
+                  <div className="text-gray-800 font-bold text-sm">
+                    ФОНД СОДЕЙСТВИЯ<br />ИННОВАЦИЯМ
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-md">
+                  <div className="text-purple-600 font-bold text-sm">
+                    ПЛАТФОРМА<br />УНИВЕРСИТЕТСКОГО<br />ТЕХНОЛОГИЧЕСКОГО<br />ПРЕДПРИНИМАТЕЛЬСТВА
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </section>
+
+        <section className="py-16 text-center animate-fade-in" style={{animationDelay: '0.9s'}}>
           <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-12 md:p-16 shadow-2xl">
             <h2 className="text-4xl md:text-5xl font-black mb-6 text-white drop-shadow-lg">
               Начни использовать бота прямо сейчас!
@@ -300,7 +378,7 @@ const Index = () => {
         </section>
 
         <footer className="py-8 text-center text-white/70 text-sm">
-          <p>© 2025 Студенческий бот. Создано студентами для студентов</p>
+          <p>© 2025 ЗаЦени. Создано студентами для студентов</p>
         </footer>
       </div>
     </div>
