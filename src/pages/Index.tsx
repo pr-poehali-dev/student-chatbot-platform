@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Index = () => {
   const features = [
@@ -99,25 +99,25 @@ const Index = () => {
       name: "Алина К.",
       university: "МГУ, 2 курс",
       text: "Нашла комнату через бота за 2 дня! Соседка оказалась с моего потока, теперь вместе ходим на пары 😊",
-      avatar: "👩‍🎓"
+      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/11868910-3fc3-4a92-9f43-8cbbd6fdf477.jpg"
     },
     {
       name: "Максим Р.",
       university: "СПбГУ, 3 курс",
       text: "AI-помощник реально выручает перед экзаменами. Объясняет лучше некоторых преподов, не шучу!",
-      avatar: "👨‍💻"
+      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/a119ae64-c774-40c5-8930-21a268561294.jpg"
     },
     {
       name: "Дарья М.",
       university: "МГТУ, 1 курс",
       text: "Виртуальный тур помог определиться с университетом ещё до поступления. Стикеры вообще огонь 🔥",
-      avatar: "👩‍🔬"
+      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/4a5823f8-99d8-48ff-94a8-c428722d017e.jpg"
     },
     {
       name: "Игорь В.",
       university: "ВШЭ, 4 курс",
       text: "Подработку нашёл через бота, график гибкий, платят хорошо. Все вакансии проверенные, без скама",
-      avatar: "👨‍🎓"
+      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/70436462-bb72-4b43-a47b-eefbfe7b152a.jpg"
     }
   ];
 
@@ -125,6 +125,8 @@ const Index = () => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -142,8 +144,21 @@ const Index = () => {
       observer.observe(section);
     });
 
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(https://cdn.poehali.dev/files/289dddc2-d94b-40d5-88f7-cd7f4a221249.jpg)'}}>
@@ -151,19 +166,19 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <h1 className="text-3xl font-black text-white" style={{fontFamily: 'Pacifico, cursive'}}>Зацени</h1>
+              <h1 className="text-3xl font-semibold text-white" style={{fontFamily: 'Pacifico, cursive'}}>Зацени</h1>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => scrollToSection('functions')} className="text-white hover:text-purple-300 transition-colors font-medium">
+              <button onClick={() => scrollToSection('functions')} className="text-white hover:text-purple-400 transition-colors font-medium">
                 Функции
               </button>
-              <button onClick={() => scrollToSection('benefits')} className="text-white hover:text-purple-300 transition-colors font-medium">
+              <button onClick={() => scrollToSection('benefits')} className="text-white hover:text-purple-400 transition-colors font-medium">
                 Преимущества
               </button>
-              <button onClick={() => scrollToSection('stickers')} className="text-white hover:text-purple-300 transition-colors font-medium">
+              <button onClick={() => scrollToSection('stickers')} className="text-white hover:text-purple-400 transition-colors font-medium">
                 Стикеры
               </button>
-              <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-purple-300 transition-colors font-medium">
+              <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-purple-400 transition-colors font-medium">
                 Отзывы
               </button>
               <Button size="sm" className="bg-white text-purple-600 hover:bg-purple-50 font-bold rounded-full">
@@ -331,7 +346,9 @@ const Index = () => {
                 style={{animationDelay: `${0.1 * index}s`}}
               >
                 <div className="flex items-start gap-4">
-                  <div className="text-5xl">{testimonial.avatar}</div>
+                  <div className="w-16 h-16 flex-shrink-0">
+                    <img src={testimonial.avatar} alt={testimonial.name} className="w-full h-full object-contain" />
+                  </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-800 mb-1">{testimonial.name}</h3>
                     <p className="text-sm text-purple-600 mb-3">{testimonial.university}</p>
@@ -391,6 +408,16 @@ const Index = () => {
         <footer className="py-8 text-center text-white/70 text-sm">
           <p>© 2025 ЗаЦени. Создано студентами для студентов</p>
         </footer>
+
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white p-4 rounded-full shadow-2xl hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 animate-fade-in"
+            aria-label="Наверх"
+          >
+            <Icon name="ArrowUp" size={24} />
+          </button>
+        )}
       </div>
     </div>
   );
