@@ -77,33 +77,23 @@ const Index = () => {
   const stickers = [
     {
       url: "https://cdn.poehali.dev/files/fdfc3cf7-f2a6-4b9f-948e-42ce8daacef0.png",
-      name: "Выпускницы",
-      position: "top-10 -left-8 rotate-12",
-      size: "w-32"
+      name: "Выпускницы"
     },
     {
       url: "https://cdn.poehali.dev/files/8c40b67b-ae42-4469-975c-51de43695c39.png",
-      name: "Оправдан",
-      position: "top-32 -right-6 -rotate-6",
-      size: "w-28"
+      name: "Оправдан"
     },
     {
       url: "https://cdn.poehali.dev/files/4d01ec0a-80bd-4831-8710-40311fdf57e2.png",
-      name: "Какого маракуйя",
-      position: "bottom-32 -left-10 rotate-6",
-      size: "w-36"
+      name: "Какого маракуйя"
     },
     {
       url: "https://cdn.poehali.dev/files/a75f16d6-f7d3-45ec-a504-a699f34c414d.png",
-      name: "Модама",
-      position: "bottom-10 -right-8 -rotate-12",
-      size: "w-32"
+      name: "Модама"
     },
     {
       url: "https://cdn.poehali.dev/files/0fee06bb-c31e-42f2-9c1c-d6c78db64527.png",
-      name: "Зачени",
-      position: "top-1/2 -right-12 rotate-3",
-      size: "w-28"
+      name: "Зачени"
     }
   ];
 
@@ -145,7 +135,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="https://cdn.poehali.dev/files/aba44430-2f37-4356-9eb3-104062be1687.png" alt="ЗаЦени" className="w-12 h-12" />
+              <img src="https://cdn.poehali.dev/files/10e030fe-356e-44bd-b0f2-981108647bf4.png" alt="ЗаЦени" className="w-12 h-12" />
               <img src="https://cdn.poehali.dev/files/ec1980cf-86dd-4311-8bd5-05bede64c7e1.png" alt="ЗаЦени" className="h-8" />
             </div>
             <div className="hidden md:flex items-center gap-8">
@@ -254,17 +244,17 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             <Card className="bg-white/90 backdrop-blur-sm p-8 md:p-12 border-2 border-purple-200">
               <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="relative flex items-center justify-center h-[400px]">
+                <div className="flex flex-wrap justify-center items-center gap-4 p-4">
                   {stickers.map((sticker, index) => (
                     <div 
                       key={index}
-                      className={`absolute ${sticker.position} ${sticker.size} animate-scale-in hover:scale-125 transition-transform duration-300 cursor-pointer`}
+                      className="w-28 h-28 animate-scale-in hover:scale-125 transition-transform duration-300 cursor-pointer"
                       style={{animationDelay: `${0.15 * index}s`}}
                     >
                       <img 
                         src={sticker.url} 
                         alt={sticker.name}
-                        className="w-full h-auto drop-shadow-xl"
+                        className="w-full h-full object-contain drop-shadow-xl"
                       />
                     </div>
                   ))}
