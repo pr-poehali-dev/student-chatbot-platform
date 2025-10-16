@@ -166,7 +166,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <h1 className="text-3xl font-semibold text-white" style={{fontFamily: 'Pacifico, cursive'}}>Зацени</h1>
+              <h1 className="text-3xl text-white font-medium" style={{fontFamily: 'Pacifico, cursive'}}>Зацени</h1>
             </div>
             <div className="hidden md:flex items-center gap-8">
               <button onClick={() => scrollToSection('functions')} className="text-white hover:text-purple-400 transition-colors font-medium">
