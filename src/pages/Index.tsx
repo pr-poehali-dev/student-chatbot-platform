@@ -84,10 +84,6 @@ const Index = () => {
       name: "Оправдан"
     },
     {
-      url: "https://cdn.poehali.dev/files/4d01ec0a-80bd-4831-8710-40311fdf57e2.png",
-      name: "Какого маракуйя"
-    },
-    {
       url: "https://cdn.poehali.dev/files/a75f16d6-f7d3-45ec-a504-a699f34c414d.png",
       name: "Модама"
     },
@@ -135,8 +131,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="https://cdn.poehali.dev/files/10e030fe-356e-44bd-b0f2-981108647bf4.png" alt="ЗаЦени" className="w-12 h-12" />
-              <img src="https://cdn.poehali.dev/files/ec1980cf-86dd-4311-8bd5-05bede64c7e1.png" alt="ЗаЦени" className="h-8" />
+              <img src="https://cdn.poehali.dev/files/ec1980cf-86dd-4311-8bd5-05bede64c7e1.png" alt="ЗаЦени" className="h-10" />
             </div>
             <div className="hidden md:flex items-center gap-8">
               <button onClick={() => scrollToSection('functions')} className="text-white hover:text-white/80 transition-colors font-medium">
@@ -322,7 +317,25 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-16 animate-fade-in" style={{animationDelay: '0.8s'}}>
+        <section className="py-16 text-center animate-fade-in" style={{animationDelay: '0.8s'}}>
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-12 md:p-16 shadow-2xl">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 text-white drop-shadow-lg">
+              Начни использовать бота прямо сейчас!
+            </h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Присоединяйся к тысячам студентов, которые уже упростили свою жизнь
+            </p>
+            <Button 
+              size="lg"
+              className="bg-white text-purple-600 hover:bg-purple-50 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-bold"
+            >
+              <Icon name="Send" size={24} className="mr-2" />
+              Открыть бота
+            </Button>
+          </div>
+        </section>
+
+        <section className="py-16 animate-fade-in" style={{animationDelay: '0.9s'}}>
           <Card className="bg-white/95 backdrop-blur-sm p-8 md:p-12 border-2 border-purple-200 max-w-5xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-black mb-4 text-gray-800">
@@ -347,24 +360,6 @@ const Index = () => {
               </div>
             </div>
           </Card>
-        </section>
-
-        <section className="py-16 text-center animate-fade-in" style={{animationDelay: '0.9s'}}>
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-12 md:p-16 shadow-2xl">
-            <h2 className="text-4xl md:text-5xl font-black mb-6 text-white drop-shadow-lg">
-              Начни использовать бота прямо сейчас!
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Присоединяйся к тысячам студентов, которые уже упростили свою жизнь
-            </p>
-            <Button 
-              size="lg"
-              className="bg-white text-purple-600 hover:bg-purple-50 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-bold"
-            >
-              <Icon name="Send" size={24} className="mr-2" />
-              Открыть бота
-            </Button>
-          </div>
         </section>
 
         <footer className="py-8 text-center text-white/70 text-sm">
