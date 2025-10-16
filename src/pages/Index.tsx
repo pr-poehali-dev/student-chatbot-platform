@@ -74,6 +74,29 @@ const Index = () => {
     }
   ];
 
+  const stickers = [
+    {
+      url: "https://cdn.poehali.dev/files/fdfc3cf7-f2a6-4b9f-948e-42ce8daacef0.png",
+      name: "Выпускницы"
+    },
+    {
+      url: "https://cdn.poehali.dev/files/8c40b67b-ae42-4469-975c-51de43695c39.png",
+      name: "Оправдан"
+    },
+    {
+      url: "https://cdn.poehali.dev/files/4d01ec0a-80bd-4831-8710-40311fdf57e2.png",
+      name: "Какого маракуйя"
+    },
+    {
+      url: "https://cdn.poehali.dev/files/a75f16d6-f7d3-45ec-a504-a699f34c414d.png",
+      name: "Модама"
+    },
+    {
+      url: "https://cdn.poehali.dev/files/0fee06bb-c31e-42f2-9c1c-d6c78db64527.png",
+      name: "Зачени"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-purple-100">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
@@ -147,7 +170,45 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-16 text-center animate-fade-in" style={{animationDelay: '0.6s'}}>
+        <section className="py-16 animate-fade-in" style={{animationDelay: '0.6s'}}>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800">
+              Уникальные стикеры
+            </h2>
+            <p className="text-lg text-gray-600">
+              Выражай эмоции студенческой жизни через крутые стикеры!
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
+            {stickers.map((sticker, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-3xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-110 animate-scale-in cursor-pointer border-2 border-purple-200 hover:border-purple-400"
+                style={{animationDelay: `${0.1 * index}s`}}
+              >
+                <img 
+                  src={sticker.url} 
+                  alt={sticker.name}
+                  className="w-full h-auto"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <p className="text-xl text-gray-700 mb-6 max-w-2xl mx-auto">
+              Более 50 эксклюзивных стикеров доступны в боте! Скачай пак и делись настроением в чатах
+            </p>
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <Icon name="Sticker" size={24} className="mr-2" />
+              Скачать стикеры
+            </Button>
+          </div>
+        </section>
+
+        <section className="py-16 text-center animate-fade-in" style={{animationDelay: '0.8s'}}>
           <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-3xl p-12 md:p-16 shadow-2xl">
             <h2 className="text-4xl md:text-5xl font-black mb-6 text-white">
               Начни использовать бота прямо сейчас!
