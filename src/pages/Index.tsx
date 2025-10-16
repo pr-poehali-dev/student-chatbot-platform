@@ -1,36 +1,37 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { useEffect } from "react";
 
 const Index = () => {
   const features = [
     {
-      icon: "Home",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg",
       title: "Поиск жилья",
       description: "Найди квартиру или комнату для аренды рядом с университетом"
     },
     {
-      icon: "Users",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/f7581e72-1c3e-45a9-a910-9bf67fac6aa1.jpg",
       title: "Поиск соседа",
       description: "Найди соседа по комнате среди студентов твоего вуза"
     },
     {
-      icon: "Briefcase",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/2135267d-39a8-4441-b8e8-e36ba5122c74.jpg",
       title: "Работа и подработка",
       description: "Вакансии и временные подработки специально для студентов"
     },
     {
-      icon: "Calendar",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/732e077c-b135-4fdb-ad1d-2da3fef214aa.jpg",
       title: "Расписание",
       description: "Доступ к актуальному учебному расписанию в одно касание"
     },
     {
-      icon: "Video",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/5fbffb17-ac95-4a32-87c3-e6b79a77e5c0.jpg",
       title: "Виртуальные туры 360°",
       description: "Познакомься с университетом в онлайн формате"
     },
     {
-      icon: "Tag",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/82ea371c-1bc5-4414-b263-700b84ff315d.jpg",
       title: "Скидки и акции",
       description: "Эксклюзивные студенческие скидки и специальные предложения"
     },
@@ -53,22 +54,22 @@ const Index = () => {
 
   const benefits = [
     {
-      emoji: "🎯",
+      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg",
       title: "Всё в одном месте",
       description: "Не нужно искать информацию в разных источниках"
     },
     {
-      emoji: "⚡",
+      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/f7581e72-1c3e-45a9-a910-9bf67fac6aa1.jpg",
       title: "Быстрый доступ",
       description: "Вся нужная информация всегда под рукой в Telegram"
     },
     {
-      emoji: "🤝",
+      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/2135267d-39a8-4441-b8e8-e36ba5122c74.jpg",
       title: "Общение",
       description: "Находи друзей и единомышленников прямо в боте"
     },
     {
-      emoji: "🎓",
+      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/732e077c-b135-4fdb-ad1d-2da3fef214aa.jpg",
       title: "Для студентов",
       description: "Создано студентами специально для студентов"
     }
@@ -125,25 +126,44 @@ const Index = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('section').forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(https://cdn.poehali.dev/files/289dddc2-d94b-40d5-88f7-cd7f4a221249.jpg)'}}>
       <nav className="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="https://cdn.poehali.dev/files/ec1980cf-86dd-4311-8bd5-05bede64c7e1.png" alt="ЗаЦени" className="h-10" />
+              <h1 className="text-3xl font-black text-white" style={{fontFamily: 'Pacifico, cursive'}}>Зацени</h1>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => scrollToSection('functions')} className="text-white hover:text-white/80 transition-colors font-medium">
+              <button onClick={() => scrollToSection('functions')} className="text-white hover:text-purple-300 transition-colors font-medium">
                 Функции
               </button>
-              <button onClick={() => scrollToSection('benefits')} className="text-white hover:text-white/80 transition-colors font-medium">
+              <button onClick={() => scrollToSection('benefits')} className="text-white hover:text-purple-300 transition-colors font-medium">
                 Преимущества
               </button>
-              <button onClick={() => scrollToSection('stickers')} className="text-white hover:text-white/80 transition-colors font-medium">
+              <button onClick={() => scrollToSection('stickers')} className="text-white hover:text-purple-300 transition-colors font-medium">
                 Стикеры
               </button>
-              <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-white/80 transition-colors font-medium">
+              <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-purple-300 transition-colors font-medium">
                 Отзывы
               </button>
               <Button size="sm" className="bg-white text-purple-600 hover:bg-purple-50 font-bold rounded-full">
@@ -193,8 +213,12 @@ const Index = () => {
                 className="p-6 bg-white/80 backdrop-blur-sm border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-xl hover:scale-105 animate-scale-in"
                 style={{animationDelay: `${0.1 * index}s`}}
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-4">
-                  <Icon name={feature.icon} size={28} className="text-white" />
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4">
+                  {feature.icon.startsWith('http') ? (
+                    <img src={feature.icon} alt={feature.title} className="w-full h-full object-contain" />
+                  ) : (
+                    <Icon name={feature.icon} size={28} className="text-purple-600" />
+                  )}
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
@@ -219,7 +243,9 @@ const Index = () => {
                 className="p-8 text-center bg-gradient-to-br from-white to-purple-50 border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-xl hover:scale-105 animate-scale-in"
                 style={{animationDelay: `${0.1 * index}s`}}
               >
-                <div className="text-6xl mb-4">{benefit.emoji}</div>
+                <div className="w-20 h-20 mx-auto mb-4">
+                  <img src={benefit.emoji} alt={benefit.title} className="w-full h-full object-contain" />
+                </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
               </Card>
@@ -243,7 +269,7 @@ const Index = () => {
                   {stickers.map((sticker, index) => (
                     <div 
                       key={index}
-                      className="w-28 h-28 animate-scale-in hover:scale-125 transition-transform duration-300 cursor-pointer"
+                      className="w-40 h-40 animate-scale-in hover:scale-125 transition-transform duration-300 cursor-pointer"
                       style={{animationDelay: `${0.15 * index}s`}}
                     >
                       <img 
