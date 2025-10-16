@@ -197,7 +197,7 @@ const Index = () => {
           <h1 className="text-5xl md:text-7xl font-black mb-4 text-white leading-tight drop-shadow-lg">
             Самая трудная сессия<br />— это ЖИЗНЬ
           </h1>
-          <p className="md:text-3xl font-bold text-white mb-6 drop-shadow-md italic text-2xl">
+          <p className="md:text-3xl font-bold text-white mb-6 drop-shadow-md italic text-xl">
             Студентам от студентов!
           </p>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-md">
