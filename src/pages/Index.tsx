@@ -197,7 +197,7 @@ const Index = () => {
           <h1 className="text-5xl md:text-7xl font-black mb-4 text-white leading-tight drop-shadow-lg">
             Самая трудная сессия<br />— это ЖИЗНЬ
           </h1>
-          <p className="text-2xl md:text-3xl font-bold text-white mb-6 drop-shadow-md italic">
+          <p className="md:text-3xl font-bold text-white mb-6 drop-shadow-md italic text-2xl">
             Студентам от студентов!
           </p>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-md">
@@ -290,7 +290,7 @@ const Index = () => {
                       <img 
                         src={sticker.url} 
                         alt={sticker.name}
-                        className="w-full h-full object-contain drop-shadow-xl"
+                        className="w-full h-full object-contain drop-shadow-xl rounded-[0.25rem]"
                       />
                     </div>
                   ))}
@@ -386,7 +386,7 @@ const Index = () => {
               </h2>
             </div>
             <div className="space-y-6 text-gray-700 leading-relaxed">
-              <p className="text-base md:text-lg">
+              <p className="text-base md:text-lg my-0 text-center">
                 Проект создан при поддержке Федерального государственного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"
               </p>
               <div className="flex flex-wrap items-center justify-center gap-8 pt-6">
