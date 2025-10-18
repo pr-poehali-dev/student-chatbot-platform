@@ -14,6 +14,7 @@ const Index = () => {
     {
       name: "РГЭУ (РИНХ)",
       fullName: "Ростовский государственный экономический университет",
+      url: "https://rsue.ru",
       images: [
         "https://cdn.poehali.dev/files/ec41ab0e-0804-4261-b0fe-2d48180f496c.jpg",
         "https://cdn.poehali.dev/files/07bf9d16-a910-44ca-bf8a-74a0d5602593.jpg",
@@ -24,15 +25,18 @@ const Index = () => {
     {
       name: "ЮФУ",
       fullName: "Южный федеральный университет",
+      url: "https://sfedu.ru",
       images: [
-        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/2135267d-39a8-4441-b8e8-e36ba5122c74.jpg",
-        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/732e077c-b135-4fdb-ad1d-2da3fef214aa.jpg",
-        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/5fbffb17-ac95-4a32-87c3-e6b79a77e5c0.jpg"
+        "https://cdn.poehali.dev/files/f88c71d9-053c-48bb-a965-e169e4ac3177.jpg",
+        "https://cdn.poehali.dev/files/de1033f3-24d0-4675-b0f2-7a04c17e6965.jpg",
+        "https://cdn.poehali.dev/files/085b1910-2457-4454-a0ae-07a8c93217ca.jpg",
+        "https://cdn.poehali.dev/files/56f97731-b83c-4f46-889f-59bf1f380250.jpg"
       ]
     },
     {
       name: "ДГТУ",
       fullName: "Донской государственный технический университет",
+      url: "https://donstu.ru",
       images: [
         "https://cdn.poehali.dev/files/e4eda722-b5a3-464e-b5a0-2e9173cda895.jpg",
         "https://cdn.poehali.dev/files/00554a9c-e72f-455a-911e-1895fdde8042.jpg",
@@ -84,6 +88,11 @@ const Index = () => {
       icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/732e077c-b135-4fdb-ad1d-2da3fef214aa.jpg",
       title: "Расписание",
       description: "Доступ к актуальному учебному расписанию в одно касание"
+    },
+    {
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/5fbffb17-ac95-4a32-87c3-e6b79a77e5c0.jpg",
+      title: "Виртуальные туры 360°",
+      description: "Познакомься с университетом в онлайн формате"
     },
     {
       icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/82ea371c-1bc5-4414-b263-700b84ff315d.jpg",
@@ -375,9 +384,16 @@ const Index = () => {
                   </button>
                 </div>
                 <div className="p-6 text-center">
-                  <h3 className="text-2xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
-                    {uni.name}
-                  </h3>
+                  <a 
+                    href={uni.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block"
+                  >
+                    <h3 className="text-2xl font-black text-white hover:text-purple-300 transition-colors mb-2">
+                      {uni.name}
+                    </h3>
+                  </a>
                   <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
                     {uni.fullName}
                   </p>
