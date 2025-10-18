@@ -4,6 +4,64 @@ import Icon from "@/components/ui/icon";
 import { useEffect, useState } from "react";
 
 const Index = () => {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  const universities = [
+    {
+      name: "РГЭУ (РИНХ)",
+      fullName: "Ростовский государственный экономический университет",
+      images: [
+        "https://cdn.poehali.dev/files/40d41b81-9010-402c-ac46-d349950e8f27.png",
+        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg",
+        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/f7581e72-1c3e-45a9-a910-9bf67fac6aa1.jpg"
+      ]
+    },
+    {
+      name: "ЮФУ",
+      fullName: "Южный федеральный университет",
+      images: [
+        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/2135267d-39a8-4441-b8e8-e36ba5122c74.jpg",
+        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/732e077c-b135-4fdb-ad1d-2da3fef214aa.jpg",
+        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/5fbffb17-ac95-4a32-87c3-e6b79a77e5c0.jpg"
+      ]
+    },
+    {
+      name: "ДГТУ",
+      fullName: "Донской государственный технический университет",
+      images: [
+        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/82ea371c-1bc5-4414-b263-700b84ff315d.jpg",
+        "https://cdn.poehali.dev/files/289dddc2-d94b-40d5-88f7-cd7f4a221249.jpg",
+        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg"
+      ]
+    }
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState<{ [key: number]: number }>({
+    0: 0,
+    1: 0,
+    2: 0
+  });
+
+  const nextImage = (universityIndex: number) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [universityIndex]: (prev[universityIndex] + 1) % universities[universityIndex].images.length
+    }));
+  };
+
+  const prevImage = (universityIndex: number) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [universityIndex]: prev[universityIndex] === 0 
+        ? universities[universityIndex].images.length - 1 
+        : prev[universityIndex] - 1
+    }));
+  };
+
   const features = [
     {
       icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg",
@@ -99,25 +157,25 @@ const Index = () => {
       name: "Алина К.",
       university: "МГУ, 2 курс",
       text: "Нашла комнату через бота за 2 дня! Соседка оказалась с моего потока, теперь вместе ходим на пары 😊",
-      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/11868910-3fc3-4a92-9f43-8cbbd6fdf477.jpg"
+      avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
     },
     {
       name: "Максим Р.",
       university: "СПбГУ, 3 курс",
       text: "AI-помощник реально выручает перед экзаменами. Объясняет лучше некоторых преподов, не шучу!",
-      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/a119ae64-c774-40c5-8930-21a268561294.jpg"
+      avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
     },
     {
       name: "Дарья М.",
       university: "МГТУ, 1 курс",
       text: "Виртуальный тур помог определиться с университетом ещё до поступления. Стикеры вообще огонь 🔥",
-      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/4a5823f8-99d8-48ff-94a8-c428722d017e.jpg"
+      avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
     },
     {
       name: "Игорь В.",
       university: "ВШЭ, 4 курс",
       text: "Подработку нашёл через бота, график гибкий, платят хорошо. Все вакансии проверенные, без скама",
-      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/70436462-bb72-4b43-a47b-eefbfe7b152a.jpg"
+      avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
     }
   ];
 
@@ -126,7 +184,13 @@ const Index = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -145,7 +209,27 @@ const Index = () => {
     });
 
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
+      const currentScrollY = window.scrollY;
+      
+      setShowScrollTop(currentScrollY > 400);
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setShowMenu(false);
+      } else {
+        setShowMenu(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      const timeout = setTimeout(() => {
+        setShowMenu(false);
+      }, 3000);
+
+      setScrollTimeout(timeout);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -153,269 +237,338 @@ const Index = () => {
     return () => {
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
     };
-  }, []);
+  }, [lastScrollY, scrollTimeout]);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const bgClass = theme === 'dark' 
+    ? 'bg-cover bg-center bg-no-repeat' 
+    : 'bg-gradient-to-br from-purple-50 via-white to-pink-50';
+
+  const textClass = theme === 'dark' ? 'text-white' : 'text-purple-900';
+  const cardBgClass = theme === 'dark' ? 'bg-white/10 backdrop-blur-md border-white/20' : 'bg-white border-purple-200';
+  const navBgClass = theme === 'dark' ? 'bg-white/10 backdrop-blur-md border-white/20' : 'bg-white/90 backdrop-blur-md border-purple-200';
 
   return (
-    <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(https://cdn.poehali.dev/files/289dddc2-d94b-40d5-88f7-cd7f4a221249.jpg)'}}>
-      <nav className="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+    <div 
+      className={`min-h-screen ${bgClass}`} 
+      style={theme === 'dark' ? {backgroundImage: 'url(https://cdn.poehali.dev/files/289dddc2-d94b-40d5-88f7-cd7f4a221249.jpg)'} : {}}
+    >
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBgClass} border-b ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <h1 className="text-3xl text-white font-medium" style={{fontFamily: 'Pacifico, cursive'}}>Зацени</h1>
+            <div className="flex items-center gap-4">
+              <h1 className={`text-3xl ${textClass} font-medium`} style={{fontFamily: 'Pacifico, cursive'}}>Зацени</h1>
+              <button 
+                onClick={toggleTheme}
+                className={`p-2 rounded-full transition-all duration-300 ${theme === 'dark' ? 'bg-white/20 hover:bg-white/30' : 'bg-purple-100 hover:bg-purple-200'}`}
+                aria-label="Переключить тему"
+              >
+                <Icon name={theme === 'dark' ? 'Sun' : 'Moon'} size={20} className={theme === 'dark' ? 'text-yellow-300' : 'text-purple-600'} />
+              </button>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => scrollToSection('functions')} className="text-white hover:text-purple-400 transition-colors font-medium">
+              <button onClick={() => scrollToSection('functions')} className={`${textClass} hover:text-purple-400 transition-colors font-medium`}>
                 Функции
               </button>
-              <button onClick={() => scrollToSection('benefits')} className="text-white hover:text-purple-400 transition-colors font-medium">
+              <button onClick={() => scrollToSection('benefits')} className={`${textClass} hover:text-purple-400 transition-colors font-medium`}>
                 Преимущества
               </button>
-              <button onClick={() => scrollToSection('stickers')} className="text-white hover:text-purple-400 transition-colors font-medium">
+              <button onClick={() => scrollToSection('stickers')} className={`${textClass} hover:text-purple-400 transition-colors font-medium`}>
                 Стикеры
               </button>
-              <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-purple-400 transition-colors font-medium">
+              <button onClick={() => scrollToSection('reviews')} className={`${textClass} hover:text-purple-400 transition-colors font-medium`}>
                 Отзывы
               </button>
-              <Button size="sm" className="bg-white text-purple-600 hover:bg-purple-50 font-bold rounded-full">
-                Открыть бота
-              </Button>
+              <a href="https://t.me/ZacenikaBot" target="_blank" rel="noopener noreferrer">
+                <Button 
+                  size="sm" 
+                  className={`font-bold rounded-full transition-all duration-500 animate-color-shift ${
+                    theme === 'dark' 
+                      ? 'bg-white text-purple-600 hover:bg-purple-50' 
+                      : 'bg-purple-600 text-white hover:bg-purple-700'
+                  }`}
+                >
+                  Открыть бота
+                </Button>
+              </a>
             </div>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
+      <div className="container mx-auto px-4 py-8 max-w-7xl pt-24">
         <section className="text-center py-16 md:py-24 animate-fade-in">
-          <div className="inline-block mb-6 px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-            <span className="text-white font-bold text-sm tracking-wider">ЭКОСИСТЕМА СЕРВИСОВ ДЛЯ СТУДЕНТОВ</span>
+          <div className={`inline-block mb-6 px-6 py-2 ${cardBgClass} rounded-full border`}>
+            <span className={`${textClass} font-bold text-sm tracking-wider`}>ЭКОСИСТЕМА СЕРВИСОВ ДЛЯ СТУДЕНТОВ</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black mb-4 text-white leading-tight drop-shadow-lg">
+          <h1 className={`text-5xl md:text-7xl font-black mb-4 ${textClass} leading-tight drop-shadow-lg animate-title-wave`}>
             Самая трудная сессия<br />— это ЖИЗНЬ
           </h1>
-          <p className="md:text-3xl font-bold text-white mb-6 drop-shadow-md italic text-2xl">
+          <p className={`md:text-3xl font-bold ${textClass} mb-6 drop-shadow-md italic text-2xl`}>
             Студентам от студентов!
           </p>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-md">
+          <p className={`text-xl md:text-2xl ${theme === 'dark' ? 'text-white/90' : 'text-purple-700'} mb-8 max-w-3xl mx-auto drop-shadow-md`}>
             Телеграм-бот, который упростит твою студенческую жизнь
           </p>
-          <Button 
-            size="lg" 
-            className="bg-white text-purple-600 hover:bg-purple-50 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-bold"
-          >
-            <Icon name="Send" size={24} className="mr-2" />
-            Открыть в Telegram
-          </Button>
-        </section>
-
-        <section id="functions" className="py-16 animate-fade-in" style={{animationDelay: '0.2s'}}>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-white drop-shadow-lg">
-              Функции бота
-            </h2>
-            <p className="text-lg text-white/90">
-              Всё необходимое для комфортной студенческой жизни
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <Card 
-                key={index}
-                className="p-6 bg-white/80 backdrop-blur-sm border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-xl hover:scale-105 animate-scale-in"
-                style={{animationDelay: `${0.1 * index}s`}}
-              >
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4">
-                  {feature.icon.startsWith('http') ? (
-                    <img src={feature.icon} alt={feature.title} className="w-full h-full object-contain" />
-                  ) : (
-                    <Icon name={feature.icon} size={28} className="text-purple-600" />
-                  )}
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <section id="benefits" className="py-16 animate-fade-in" style={{animationDelay: '0.4s'}}>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-white drop-shadow-lg">
-              Преимущества
-            </h2>
-            <p className="text-lg text-white/90">
-              Почему студенты выбирают наш бот
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <Card 
-                key={index}
-                className="p-8 text-center bg-gradient-to-br from-white to-purple-50 border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-xl hover:scale-105 animate-scale-in"
-                style={{animationDelay: `${0.1 * index}s`}}
-              >
-                <div className="w-20 h-20 mx-auto mb-4">
-                  <img src={benefit.emoji} alt={benefit.title} className="w-full h-full object-contain" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <section id="stickers" className="py-16 animate-fade-in" style={{animationDelay: '0.6s'}}>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-white drop-shadow-lg">
-              Уникальные стикеры
-            </h2>
-            <p className="text-lg text-white/90">
-              Выражай эмоции студенческой жизни через крутые стикеры!
-            </p>
-          </div>
-          <div className="max-w-5xl mx-auto">
-            <Card className="bg-white/90 backdrop-blur-sm p-8 md:p-12 border-2 border-purple-200">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="flex flex-wrap justify-center items-center gap-4 p-4">
-                  {stickers.map((sticker, index) => (
-                    <div 
-                      key={index}
-                      className="w-40 h-40 animate-scale-in hover:scale-125 transition-transform duration-300 cursor-pointer"
-                      style={{animationDelay: `${0.15 * index}s`}}
-                    >
-                      <img 
-                        src={sticker.url} 
-                        alt={sticker.name}
-                        className="w-full h-full object-contain drop-shadow-xl rounded-[0.25rem]"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <h3 className="text-3xl font-black mb-4 text-gray-800">
-                    Пак эксклюзивных стикеров
-                  </h3>
-                  <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                    Более <span className="font-bold text-purple-600">50 уникальных стикеров</span>, которые передают настроение студенческой жизни! От радости выпускного до ночных бдений перед экзаменом.
-                  </p>
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-start gap-2">
-                      <Icon name="Check" size={20} className="text-purple-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700">Эксклюзивный дизайн от студентов для студентов</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="Check" size={20} className="text-purple-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700">Постоянное пополнение коллекции новыми стикерами</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="Check" size={20} className="text-purple-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700">Доступны бесплатно прямо в боте</span>
-                    </li>
-                  </ul>
-                  <Button 
-                    size="lg"
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full md:w-auto"
-                  >
-                    <Icon name="Download" size={24} className="mr-2" />
-                    Получить стикеры в боте
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </section>
-
-        <section id="reviews" className="py-16 animate-fade-in" style={{animationDelay: '0.7s'}}>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-white">
-              Отзывы студентов
-            </h2>
-            <p className="text-lg text-white/90">
-              Что говорят те, кто уже пользуется ботом
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <Card 
-                key={index}
-                className="p-6 bg-white/90 backdrop-blur-sm border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-xl animate-scale-in"
-                style={{animationDelay: `${0.1 * index}s`}}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 flex-shrink-0">
-                    <img src={testimonial.avatar} alt={testimonial.name} className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-800 mb-1">{testimonial.name}</h3>
-                    <p className="text-sm text-purple-600 mb-3">{testimonial.university}</p>
-                    <p className="text-gray-700 leading-relaxed">{testimonial.text}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <section className="py-16 text-center animate-fade-in" style={{animationDelay: '0.8s'}}>
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-12 md:p-16 shadow-2xl">
-            <h2 className="text-4xl md:text-5xl font-black mb-6 text-white drop-shadow-lg">
-              Начни использовать бота прямо сейчас!
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Присоединяйся к тысячам студентов, которые уже упростили свою жизнь
-            </p>
+          <a href="https://t.me/ZacenikaBot" target="_blank" rel="noopener noreferrer">
             <Button 
-              size="lg"
-              className="bg-white text-purple-600 hover:bg-purple-50 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-bold"
+              size="lg" 
+              className={`text-lg px-12 py-6 rounded-full font-bold shadow-2xl hover:shadow-xl transition-all hover:scale-105 ${
+                theme === 'dark'
+                  ? 'bg-white text-purple-600 hover:bg-purple-50'
+                  : 'bg-purple-600 text-white hover:bg-purple-700'
+              }`}
             >
-              <Icon name="Send" size={24} className="mr-2" />
-              Открыть бота
+              <Icon name="Send" className="mr-2" size={24} />
+              Открыть в Telegram
             </Button>
-          </div>
+          </a>
         </section>
 
-        <section className="py-16 animate-fade-in" style={{animationDelay: '0.9s'}}>
-          <Card className="bg-white/95 backdrop-blur-sm p-8 md:p-12 border-2 border-purple-200 max-w-5xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-black mb-4 text-gray-800">
-                О проекте
-              </h2>
-            </div>
-            <div className="space-y-6 text-gray-700 leading-relaxed">
-              <p className="text-base md:text-lg my-0 text-center">
-                Проект создан при поддержке Федерального государственного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-8 pt-6">
-                <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-md">
-                  <div className="text-gray-800 font-bold text-sm">
-                    ФОНД СОДЕЙСТВИЯ<br />ИННОВАЦИЯМ
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-md">
-                  <div className="text-purple-600 font-bold text-sm">
-                    ПЛАТФОРМА<br />УНИВЕРСИТЕТСКОГО<br />ТЕХНОЛОГИЧЕСКОГО<br />ПРЕДПРИНИМАТЕЛЬСТВА
-                  </div>
-                </div>
-              </div>
+        <section id="tour" className="py-16 scroll-mt-24">
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 ${textClass} animate-title-wave`}>
+            Виртуальный тур по университету
+          </h2>
+          <Card className={`${cardBgClass} p-4 overflow-hidden`}>
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe 
+                src="https://rsue.ru/tour/tour.html"
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
+                title="Виртуальный тур"
+                allowFullScreen
+              />
             </div>
           </Card>
         </section>
 
-        <footer className="py-8 text-center text-white/70 text-sm">
+        <section id="universities" className="py-16 scroll-mt-24">
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
+            Виртуальные
+          </h2>
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-title-wave`}>
+            ТУРЫ
+          </h2>
+          <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-12 text-lg`}>
+            По главным университетам Ростова-на-Дону
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {universities.map((uni, idx) => (
+              <Card key={idx} className={`${cardBgClass} overflow-hidden group hover:scale-105 transition-transform duration-300`}>
+                <div className="relative aspect-[4/3]">
+                  <img 
+                    src={uni.images[currentImageIndex[idx]]} 
+                    alt={uni.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    onClick={() => prevImage(idx)}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                  >
+                    <Icon name="ChevronLeft" size={24} className="text-purple-600" />
+                  </button>
+                  <button
+                    onClick={() => nextImage(idx)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                  >
+                    <Icon name="ChevronRight" size={24} className="text-purple-600" />
+                  </button>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-2xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+                    {uni.name}
+                  </h3>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
+                    {uni.fullName}
+                  </p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="functions" className="py-16 scroll-mt-24">
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 ${textClass} animate-title-wave`}>
+            Функции бота
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <Card 
+                key={index} 
+                className={`${cardBgClass} p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl group`}
+              >
+                <div className="flex flex-col items-center text-center">
+                  {feature.icon.startsWith('http') ? (
+                    <img src={feature.icon} alt={feature.title} className="w-16 h-16 object-cover rounded-2xl mb-4 shadow-lg" />
+                  ) : (
+                    <div className="p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                      <Icon name={feature.icon as any} size={32} className="text-white" />
+                    </div>
+                  )}
+                  <h3 className={`text-xl font-bold mb-2 ${textClass}`}>{feature.title}</h3>
+                  <p className={`${theme === 'dark' ? 'text-white/70' : 'text-purple-600'}`}>{feature.description}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="benefits" className="py-16 scroll-mt-24">
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 ${textClass} animate-title-wave`}>
+            Почему ЗаЦени?
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((benefit, index) => (
+              <Card 
+                key={index} 
+                className={`${cardBgClass} p-8 text-center hover:scale-105 transition-all duration-300 hover:shadow-2xl`}
+              >
+                <img src={benefit.emoji} alt={benefit.title} className="w-20 h-20 mx-auto mb-4 rounded-full shadow-lg" />
+                <h3 className={`text-xl font-bold mb-2 ${textClass}`}>{benefit.title}</h3>
+                <p className={`${theme === 'dark' ? 'text-white/70' : 'text-purple-600'}`}>{benefit.description}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="stickers" className="py-16 scroll-mt-24">
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
+            Эксклюзивные стикеры
+          </h2>
+          <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-12 text-lg`}>
+            Получи уникальный набор стикеров в боте
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            {stickers.map((sticker, index) => (
+              <Card 
+                key={index} 
+                className={`${cardBgClass} p-6 hover:scale-110 transition-all duration-300 hover:shadow-2xl cursor-pointer`}
+              >
+                <img 
+                  src={sticker.url} 
+                  alt={sticker.name}
+                  className="w-full aspect-square object-contain"
+                />
+              </Card>
+            ))}
+          </div>
+          <div className="text-center">
+            <a href="https://t.me/ZacenikaBot" target="_blank" rel="noopener noreferrer">
+              <Button 
+                size="lg" 
+                className={`text-lg px-12 py-6 rounded-full font-bold shadow-2xl hover:shadow-xl transition-all hover:scale-105 ${
+                  theme === 'dark'
+                    ? 'bg-white text-purple-600 hover:bg-purple-50'
+                    : 'bg-purple-600 text-white hover:bg-purple-700'
+                }`}
+              >
+                Получить стикеры в боте
+              </Button>
+            </a>
+          </div>
+        </section>
+
+        <section id="reviews" className="py-16 scroll-mt-24">
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 ${textClass} animate-title-wave`}>
+            Отзывы студентов
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <Card 
+                key={index} 
+                className={`${cardBgClass} p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl`}
+              >
+                <div className="flex items-start gap-4">
+                  <img 
+                    src={testimonial.avatar} 
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full shadow-lg"
+                  />
+                  <div className="flex-1">
+                    <h4 className={`font-bold ${textClass} mb-1`}>{testimonial.name}</h4>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-500'} mb-3`}>{testimonial.university}</p>
+                    <p className={`${theme === 'dark' ? 'text-white/80' : 'text-purple-700'}`}>{testimonial.text}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-16 text-center">
+          <Card className={`${cardBgClass} p-12 shadow-2xl`}>
+            <h2 className={`text-4xl md:text-5xl font-black mb-6 ${textClass} animate-title-wave`}>
+              Готов упростить студенческую жизнь?
+            </h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-white/80' : 'text-purple-700'} mb-8`}>
+              Присоединяйся к тысячам студентов уже сегодня!
+            </p>
+            <a href="https://t.me/ZacenikaBot" target="_blank" rel="noopener noreferrer">
+              <Button 
+                size="lg" 
+                className={`text-lg px-12 py-6 rounded-full font-bold shadow-2xl hover:shadow-xl transition-all hover:scale-105 ${
+                  theme === 'dark'
+                    ? 'bg-white text-purple-600 hover:bg-purple-50'
+                    : 'bg-purple-600 text-white hover:bg-purple-700'
+                }`}
+              >
+                <Icon name="Send" className="mr-2" size={24} />
+                Открыть бота
+              </Button>
+            </a>
+          </Card>
+        </section>
+
+        <section className="py-12">
+          <h2 className={`text-3xl md:text-4xl font-black text-center mb-8 ${textClass} animate-title-wave`}>
+            При поддержке
+          </h2>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+            <a 
+              href="https://fasie.ru" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group hover:scale-110 transition-all duration-300"
+            >
+              <img 
+                src="https://cdn.poehali.dev/files/231ac3e7-6fc6-4ab9-b0a0-95807af431bc.png" 
+                alt="Фонд содействия инновациям"
+                className="h-24 md:h-32 object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all"
+              />
+            </a>
+            <a 
+              href="https://univertechpred.ru" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group hover:scale-110 transition-all duration-300"
+            >
+              <img 
+                src="https://cdn.poehali.dev/files/1e84ebb2-2584-421a-90ef-dcaf955d7c2f.png" 
+                alt="Платформа университетского технологического предпринимательства"
+                className="h-24 md:h-32 object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all"
+              />
+            </a>
+          </div>
+        </section>
+
+        <footer className={`py-8 text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} text-sm`}>
           <p>© 2025 ЗаЦени. Создано студентами для студентов</p>
         </footer>
 
         {showScrollTop && (
           <button
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white p-4 rounded-full shadow-2xl hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 animate-fade-in"
+            className={`fixed bottom-8 right-8 p-4 rounded-full shadow-2xl hover:shadow-xl transition-all duration-500 hover:scale-110 z-50 animate-bounce-in ${
+              theme === 'dark'
+                ? 'bg-purple-600/30 hover:bg-purple-600/50 backdrop-blur-md border-2 border-purple-400/50'
+                : 'bg-purple-100/50 hover:bg-purple-200/70 backdrop-blur-md border-2 border-purple-300'
+            }`}
             aria-label="Наверх"
           >
-            <Icon name="ArrowUp" size={24} />
+            <Icon name="ArrowUp" size={24} className={theme === 'dark' ? 'text-white' : 'text-purple-600'} />
           </button>
         )}
       </div>
