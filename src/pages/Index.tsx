@@ -15,9 +15,9 @@ const Index = () => {
       name: "РГЭУ (РИНХ)",
       fullName: "Ростовский государственный экономический университет",
       images: [
+        "https://cdn.poehali.dev/files/ec41ab0e-0804-4261-b0fe-2d48180f496c.jpg",
         "https://cdn.poehali.dev/files/40d41b81-9010-402c-ac46-d349950e8f27.png",
-        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg",
-        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/f7581e72-1c3e-45a9-a910-9bf67fac6aa1.jpg"
+        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg"
       ]
     },
     {
@@ -33,9 +33,10 @@ const Index = () => {
       name: "ДГТУ",
       fullName: "Донской государственный технический университет",
       images: [
-        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/82ea371c-1bc5-4414-b263-700b84ff315d.jpg",
-        "https://cdn.poehali.dev/files/289dddc2-d94b-40d5-88f7-cd7f4a221249.jpg",
-        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg"
+        "https://cdn.poehali.dev/files/abedafc2-e9b8-4eae-8249-35b2a5ed0436.jpg",
+        "https://cdn.poehali.dev/files/00554a9c-e72f-455a-911e-1895fdde8042.jpg",
+        "https://cdn.poehali.dev/files/2f06ca75-0688-4edb-8fe9-19970387bc81.jpg",
+        "https://cdn.poehali.dev/files/63b79e69-3097-4521-bf1e-eb2df0759297.jpg"
       ]
     }
   ];
@@ -156,7 +157,7 @@ const Index = () => {
     {
       name: "Алина К.",
       university: "МГУ, 2 курс",
-      text: "Нашла комнату через бота за 2 дня! Соседка оказалась с моего потока, теперь вместе ходим на пары 😊",
+      text: "Нашла комнату через бота за 2 дня! Соседка оказалась с моего потока, теперь вместе ходим на пары",
       avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
     },
     {
@@ -168,7 +169,7 @@ const Index = () => {
     {
       name: "Дарья М.",
       university: "МГТУ, 1 курс",
-      text: "Виртуальный тур помог определиться с университетом ещё до поступления. Стикеры вообще огонь 🔥",
+      text: "Виртуальный тур помог определиться с университетом ещё до поступления. Стикеры вообще огонь",
       avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
     },
     {
@@ -482,11 +483,13 @@ const Index = () => {
                 className={`${cardBgClass} p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl`}
               >
                 <div className="flex items-start gap-4">
-                  <img 
-                    src={testimonial.avatar} 
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full shadow-lg"
-                  />
+                  <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center flex-shrink-0">
+                    <img 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name}
+                      className="w-12 h-12"
+                    />
+                  </div>
                   <div className="flex-1">
                     <h4 className={`font-bold ${textClass} mb-1`}>{testimonial.name}</h4>
                     <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-500'} mb-3`}>{testimonial.university}</p>
@@ -523,9 +526,12 @@ const Index = () => {
         </section>
 
         <section className="py-12">
-          <h2 className={`text-3xl md:text-4xl font-black text-center mb-8 ${textClass} animate-title-wave`}>
+          <h2 className={`text-3xl md:text-4xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
             При поддержке
           </h2>
+          <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-8 text-lg`}>
+            Проект реализуется при поддержке Фонда содействия развитию малых форм предприятий в научно-технической сфере (Программа «Студенческий стартап»)
+          </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-12">
             <a 
               href="https://fasie.ru" 
