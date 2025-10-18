@@ -539,7 +539,7 @@ const Index = () => {
 
         <section className="py-12">
           <Card className="bg-white p-12 shadow-2xl">
-            <p className="text-center text-purple-900 mb-12 text-base md:text-lg leading-relaxed max-w-4xl mx-auto">
+            <p className="text-center mb-12 text-base md:text-lg leading-relaxed max-w-4xl mx-auto text-[#000000]">
               Проект создан при поддержке Федерального государственного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-12">
