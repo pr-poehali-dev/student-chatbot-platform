@@ -28,7 +28,7 @@ const Index = () => {
       url: "https://sfedu.ru",
       images: [
         "https://cdn.poehali.dev/files/f88c71d9-053c-48bb-a965-e169e4ac3177.jpg",
-        "https://cdn.poehali.dev/files/de1033f3-24d0-4675-b0f2-7a04c17e6965.jpg",
+        "https://cdn.poehali.dev/files/b3753219-41c6-4bdb-a3a9-7c65fe5fd9c1.jpg",
         "https://cdn.poehali.dev/files/085b1910-2457-4454-a0ae-07a8c93217ca.jpg",
         "https://cdn.poehali.dev/files/56f97731-b83c-4f46-889f-59bf1f380250.jpg"
       ]
@@ -334,22 +334,6 @@ const Index = () => {
           </a>
         </section>
 
-        <section id="tour" className="py-16 scroll-mt-24">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 ${textClass} animate-title-wave`}>
-            Виртуальный тур по университету
-          </h2>
-          <Card className={`${cardBgClass} p-4 overflow-hidden`}>
-            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe 
-                src="https://rsue.ru/tour/tour.html"
-                className="absolute top-0 left-0 w-full h-full rounded-lg"
-                title="Виртуальный тур"
-                allowFullScreen
-              />
-            </div>
-          </Card>
-        </section>
-
         <section id="universities" className="py-16 scroll-mt-24">
           <h2 className={`text-4xl md:text-5xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
             Виртуальные
@@ -401,6 +385,60 @@ const Index = () => {
               </Card>
             ))}
           </div>
+        </section>
+
+        <section id="map" className="py-16 scroll-mt-24">
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
+            Интерактивная карта
+          </h2>
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-title-wave`}>
+            РОСТОВА-НА-ДОНУ
+          </h2>
+          <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-12 text-lg`}>
+            Общежития, работа и популярные студенческие места
+          </p>
+
+          <Card className={`${cardBgClass} p-4 overflow-hidden shadow-2xl`}>
+            <div className="relative w-full h-[600px] rounded-lg overflow-hidden">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A7c8e5f5b8d9e4c6a9b1c2d3e4f5a6b7c&amp;source=constructor"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                className="rounded-lg"
+                title="Карта Ростова-на-Дону для студентов"
+              />
+            </div>
+            <div className="grid md:grid-cols-3 gap-4 mt-6">
+              <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-purple-900/30' : 'bg-purple-50'}`}>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                  <h3 className={`font-bold ${textClass}`}>Общежития</h3>
+                </div>
+                <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
+                  Студенческие общежития и съёмное жильё
+                </p>
+              </div>
+              <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-purple-900/30' : 'bg-purple-50'}`}>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <h3 className={`font-bold ${textClass}`}>Работа</h3>
+                </div>
+                <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
+                  Места работы и подработок для студентов
+                </p>
+              </div>
+              <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-purple-900/30' : 'bg-purple-50'}`}>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-3 h-3 rounded-full bg-pink-500"></div>
+                  <h3 className={`font-bold ${textClass}`}>Студенческие места</h3>
+                </div>
+                <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
+                  Кафе, коворкинги и места отдыха
+                </p>
+              </div>
+            </div>
+          </Card>
         </section>
 
         <section id="functions" className="py-16 scroll-mt-24">
@@ -552,7 +590,7 @@ const Index = () => {
                 <img 
                   src="https://cdn.poehali.dev/files/231ac3e7-6fc6-4ab9-b0a0-95807af431bc.png" 
                   alt="Фонд содействия инновациям"
-                  className="h-24 md:h-32 drop-shadow-xl group-hover:drop-shadow-2xl transition-all object-scale-down"
+                  className="h-16 md:h-20 drop-shadow-xl group-hover:drop-shadow-2xl transition-all object-scale-down"
                 />
               </a>
               <a 
