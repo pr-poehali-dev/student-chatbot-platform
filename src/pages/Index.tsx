@@ -536,7 +536,7 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/231ac3e7-6fc6-4ab9-b0a0-95807af431bc.png" 
                 alt="Фонд содействия инновациям"
-                className="h-24 md:h-32 object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all"
+                className="h-24 md:h-32 drop-shadow-xl group-hover:drop-shadow-2xl transition-all object-scale-down"
               />
             </a>
             <a 
