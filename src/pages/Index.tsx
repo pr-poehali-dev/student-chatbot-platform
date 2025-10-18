@@ -16,8 +16,9 @@ const Index = () => {
       fullName: "Ростовский государственный экономический университет",
       images: [
         "https://cdn.poehali.dev/files/ec41ab0e-0804-4261-b0fe-2d48180f496c.jpg",
-        "https://cdn.poehali.dev/files/40d41b81-9010-402c-ac46-d349950e8f27.png",
-        "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg"
+        "https://cdn.poehali.dev/files/07bf9d16-a910-44ca-bf8a-74a0d5602593.jpg",
+        "https://cdn.poehali.dev/files/151f986e-98c8-4f4e-bd00-776855ea2935.jpg",
+        "https://cdn.poehali.dev/files/68e9e6c6-b597-4940-a328-3bcd231197bc.jpg"
       ]
     },
     {
@@ -33,7 +34,7 @@ const Index = () => {
       name: "ДГТУ",
       fullName: "Донской государственный технический университет",
       images: [
-        "https://cdn.poehali.dev/files/abedafc2-e9b8-4eae-8249-35b2a5ed0436.jpg",
+        "https://cdn.poehali.dev/files/e4eda722-b5a3-464e-b5a0-2e9173cda895.jpg",
         "https://cdn.poehali.dev/files/00554a9c-e72f-455a-911e-1895fdde8042.jpg",
         "https://cdn.poehali.dev/files/2f06ca75-0688-4edb-8fe9-19970387bc81.jpg",
         "https://cdn.poehali.dev/files/63b79e69-3097-4521-bf1e-eb2df0759297.jpg"
@@ -83,11 +84,6 @@ const Index = () => {
       icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/732e077c-b135-4fdb-ad1d-2da3fef214aa.jpg",
       title: "Расписание",
       description: "Доступ к актуальному учебному расписанию в одно касание"
-    },
-    {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/5fbffb17-ac95-4a32-87c3-e6b79a77e5c0.jpg",
-      title: "Виртуальные туры 360°",
-      description: "Познакомься с университетом в онлайн формате"
     },
     {
       icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/82ea371c-1bc5-4414-b263-700b84ff315d.jpg",
@@ -526,38 +522,37 @@ const Index = () => {
         </section>
 
         <section className="py-12">
-          <h2 className={`text-3xl md:text-4xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
-            При поддержке
-          </h2>
-          <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-8 text-lg`}>
-            Проект реализуется при поддержке Фонда содействия развитию малых форм предприятий в научно-технической сфере (Программа «Студенческий стартап»)
-          </p>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-            <a 
-              href="https://fasie.ru" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group hover:scale-110 transition-all duration-300"
-            >
-              <img 
-                src="https://cdn.poehali.dev/files/231ac3e7-6fc6-4ab9-b0a0-95807af431bc.png" 
-                alt="Фонд содействия инновациям"
-                className="h-24 md:h-32 drop-shadow-xl group-hover:drop-shadow-2xl transition-all object-scale-down"
-              />
-            </a>
-            <a 
-              href="https://univertechpred.ru" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group hover:scale-110 transition-all duration-300"
-            >
-              <img 
-                src="https://cdn.poehali.dev/files/1e84ebb2-2584-421a-90ef-dcaf955d7c2f.png" 
-                alt="Платформа университетского технологического предпринимательства"
-                className="h-24 md:h-32 object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all"
-              />
-            </a>
-          </div>
+          <Card className="bg-white p-12 shadow-2xl">
+            <p className="text-center text-purple-900 mb-12 text-base md:text-lg leading-relaxed max-w-4xl mx-auto">
+              Проект создан при поддержке Федерального государственного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"
+            </p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+              <a 
+                href="https://fasie.ru" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group hover:scale-110 transition-all duration-300"
+              >
+                <img 
+                  src="https://cdn.poehali.dev/files/231ac3e7-6fc6-4ab9-b0a0-95807af431bc.png" 
+                  alt="Фонд содействия инновациям"
+                  className="h-24 md:h-32 drop-shadow-xl group-hover:drop-shadow-2xl transition-all object-scale-down"
+                />
+              </a>
+              <a 
+                href="https://univertechpred.ru" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group hover:scale-110 transition-all duration-300"
+              >
+                <img 
+                  src="https://cdn.poehali.dev/files/1e84ebb2-2584-421a-90ef-dcaf955d7c2f.png" 
+                  alt="Платформа университетского технологического предпринимательства"
+                  className="h-24 md:h-32 object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all"
+                />
+              </a>
+            </div>
+          </Card>
         </section>
 
         <footer className={`py-8 text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} text-sm`}>
