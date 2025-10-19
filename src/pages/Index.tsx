@@ -615,7 +615,7 @@ const Index = () => {
 
         <section className="py-12">
           <Card className="bg-white p-12 shadow-2xl">
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center text-purple-600 animate-title-wave">
+            <h2 className="md:text-5xl font-black mb-8 text-center animate-title-wave text-[#000000] text-5xl">
               О проекте
             </h2>
             <p className="text-center mb-12 text-base md:text-lg leading-relaxed max-w-4xl mx-auto text-[#000000]">
