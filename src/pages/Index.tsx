@@ -9,6 +9,7 @@ const Index = () => {
   const [showMenu, setShowMenu] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [mapFilter, setMapFilter] = useState<'all' | 'universities' | 'dormitories' | 'places'>('all');
 
   const universities = [
     {
@@ -27,8 +28,7 @@ const Index = () => {
       fullName: "Южный федеральный университет",
       url: "https://sfedu.ru",
       images: [
-        "https://cdn.poehali.dev/files/08780390-77db-4dda-bee5-0fe6496e467c.jpg",
-        "https://cdn.poehali.dev/files/b3753219-41c6-4bdb-a3a9-7c65fe5fd9c1.jpg",
+        "https://cdn.poehali.dev/files/2798458e-d19c-4dde-95b0-9f5612030816.jpg",
         "https://cdn.poehali.dev/files/085b1910-2457-4454-a0ae-07a8c93217ca.jpg",
         "https://cdn.poehali.dev/files/56f97731-b83c-4f46-889f-59bf1f380250.jpg"
       ]
@@ -254,6 +254,7 @@ const Index = () => {
     : 'bg-gradient-to-br from-purple-50 via-white to-pink-50';
 
   const textClass = theme === 'dark' ? 'text-white' : 'text-purple-900';
+  const smallTextClass = theme === 'dark' ? 'text-white/70' : 'text-black';
   const cardBgClass = theme === 'dark' ? 'bg-white/10 backdrop-blur-md border-white/20' : 'bg-white border-purple-200';
   const navBgClass = theme === 'dark' ? 'bg-white/10 backdrop-blur-md border-white/20' : 'bg-white/90 backdrop-blur-md border-purple-200';
 
@@ -262,7 +263,10 @@ const Index = () => {
       className={`min-h-screen ${bgClass}`} 
       style={theme === 'dark' ? {backgroundImage: 'url(https://cdn.poehali.dev/files/289dddc2-d94b-40d5-88f7-cd7f4a221249.jpg)'} : {}}
     >
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBgClass} border-b ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}>
+      <nav 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBgClass} border-b ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+        onMouseEnter={() => setShowMenu(true)}
+      >
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -291,10 +295,10 @@ const Index = () => {
               <a href="https://t.me/ZacenikaBot" target="_blank" rel="noopener noreferrer">
                 <Button 
                   size="sm" 
-                  className={`font-bold rounded-full transition-colors duration-300 ${
+                  className={`font-bold rounded-full transition-all duration-300 ${
                     theme === 'dark' 
-                      ? 'bg-white text-purple-600 hover:bg-purple-50' 
-                      : 'bg-purple-600 text-white hover:bg-purple-600 hover:text-white'
+                      ? 'bg-white text-purple-600 hover:bg-purple-500 hover:text-white active:bg-purple-700 active:scale-95' 
+                      : 'bg-purple-600 text-white hover:bg-purple-500 active:bg-purple-800 active:scale-95'
                   }`}
                 >
                   Открыть бота
@@ -308,7 +312,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8 max-w-7xl pt-24">
         <section className="text-center py-16 md:py-24 animate-fade-in">
           <div className={`inline-block mb-6 px-6 py-2 ${cardBgClass} rounded-full border`}>
-            <span className={`${textClass} font-bold text-sm tracking-wider`}>ЭКОСИСТЕМА СЕРВИСОВ ДЛЯ СТУДЕНТОВ</span>
+            <span className={`${textClass} font-bold text-sm tracking-wider`}>готов упростить студенческую жизнь?</span>
           </div>
           <h1 className={`text-5xl md:text-7xl font-black mb-4 leading-tight drop-shadow-lg animate-title-wave ${
             theme === 'dark' 
@@ -357,7 +361,7 @@ const Index = () => {
                     </div>
                   )}
                   <h3 className={`text-xl font-bold mb-2 ${textClass}`}>{feature.title}</h3>
-                  <p className={`${theme === 'dark' ? 'text-white/70' : 'text-purple-600'}`}>{feature.description}</p>
+                  <p className={`${smallTextClass}`}>{feature.description}</p>
                 </div>
               </Card>
             ))}
@@ -368,9 +372,7 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-white animate-title-wave">
             Виртуальный тур по университету
           </h2>
-          <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-12 text-lg`}>
-            По главным университетам Ростова-на-Дону
-          </p>
+
 
           <div className="grid md:grid-cols-3 gap-8">
             {universities.map((uni, idx) => (
@@ -379,7 +381,7 @@ const Index = () => {
                   <img 
                     src={uni.images[currentImageIndex[idx]]} 
                     alt={uni.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-opacity duration-500"
                   />
                   <button
                     onClick={() => prevImage(idx)}
@@ -418,7 +420,7 @@ const Index = () => {
                       {uni.name}
                     </h3>
                   </a>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
+                  <p className={`text-sm ${smallTextClass}`}>
                     {uni.fullName}
                   </p>
                 </div>
@@ -428,15 +430,9 @@ const Index = () => {
         </section>
 
         <section id="map" className="py-16 scroll-mt-24">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-4 text-white animate-title-wave">
-            Интерактивная карта
-          </h2>
           <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-white animate-title-wave">
-            РОСТОВА-НА-ДОНУ
+            Интерактивная карта Ростова-на-Дону
           </h2>
-          <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-12 text-lg`}>
-            Общежития, работа и популярные студенческие места
-          </p>
 
           <Card className={`${cardBgClass} p-4 overflow-hidden shadow-2xl`}>
             <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
@@ -449,34 +445,58 @@ const Index = () => {
                 title="Карта Ростова-на-Дону для студентов"
               />
             </div>
-            <div className="grid md:grid-cols-3 gap-4 mt-6">
-              <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-purple-900/30' : 'bg-purple-50'}`}>
-                <div className="flex items-center gap-3 mb-2">
+            <div className="flex flex-wrap justify-center gap-3 mt-6">
+              <button
+                onClick={() => setMapFilter('universities')}
+                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                  mapFilter === 'universities'
+                    ? theme === 'dark'
+                      ? 'bg-purple-600 text-white shadow-lg scale-105'
+                      : 'bg-purple-600 text-white shadow-lg scale-105'
+                    : theme === 'dark'
+                      ? 'bg-white/10 text-white hover:bg-white/20'
+                      : 'bg-purple-100 text-purple-900 hover:bg-purple-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <span>Университеты</span>
+                </div>
+              </button>
+              <button
+                onClick={() => setMapFilter('dormitories')}
+                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                  mapFilter === 'dormitories'
+                    ? theme === 'dark'
+                      ? 'bg-purple-600 text-white shadow-lg scale-105'
+                      : 'bg-purple-600 text-white shadow-lg scale-105'
+                    : theme === 'dark'
+                      ? 'bg-white/10 text-white hover:bg-white/20'
+                      : 'bg-purple-100 text-purple-900 hover:bg-purple-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                  <h3 className={`font-bold ${textClass}`}>Общежития</h3>
+                  <span>Общежития</span>
                 </div>
-                <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
-                  Студенческие общежития и съёмное жильё
-                </p>
-              </div>
-              <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-purple-900/30' : 'bg-purple-50'}`}>
-                <div className="flex items-center gap-3 mb-2">
+              </button>
+              <button
+                onClick={() => setMapFilter('places')}
+                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                  mapFilter === 'places'
+                    ? theme === 'dark'
+                      ? 'bg-purple-600 text-white shadow-lg scale-105'
+                      : 'bg-purple-600 text-white shadow-lg scale-105'
+                    : theme === 'dark'
+                      ? 'bg-white/10 text-white hover:bg-white/20'
+                      : 'bg-purple-100 text-purple-900 hover:bg-purple-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <h3 className={`font-bold ${textClass}`}>Работа</h3>
+                  <span>Студенческие места</span>
                 </div>
-                <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
-                  Места работы и подработок для студентов
-                </p>
-              </div>
-              <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-purple-900/30' : 'bg-purple-50'}`}>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-3 h-3 rounded-full bg-pink-500"></div>
-                  <h3 className={`font-bold ${textClass}`}>Студенческие места</h3>
-                </div>
-                <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-600'}`}>
-                  Кафе, коворкинги и места отдыха
-                </p>
-              </div>
+              </button>
             </div>
           </Card>
         </section>
@@ -495,7 +515,7 @@ const Index = () => {
               >
                 <img src={benefit.emoji} alt={benefit.title} className="w-20 h-20 mx-auto mb-4 rounded-full shadow-lg" />
                 <h3 className={`text-xl font-bold mb-2 ${textClass}`}>{benefit.title}</h3>
-                <p className={`${theme === 'dark' ? 'text-white/70' : 'text-purple-600'}`}>{benefit.description}</p>
+                <p className={`${smallTextClass}`}>{benefit.description}</p>
               </Card>
             ))}
           </div>
@@ -538,19 +558,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-16">
-          <div className="max-w-4xl mx-auto">
-            <Card className={`${cardBgClass} p-12 text-center relative overflow-hidden`}>
-              <div className="relative z-10">
-                <img 
-                  src="https://cdn.poehali.dev/files/1cc26ad5-ad7a-4e39-831d-9e31a221177a.png"
-                  alt="Стикеры бота" 
-                  className="w-full max-w-2xl mx-auto rounded-2xl shadow-2xl"
-                />
-              </div>
-            </Card>
-          </div>
-        </section>
+
 
         <section id="reviews" className="py-16 scroll-mt-24">
           <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-white animate-title-wave">
@@ -572,8 +580,8 @@ const Index = () => {
                   </div>
                   <div className="flex-1">
                     <h4 className={`font-bold ${textClass} mb-1`}>{testimonial.name}</h4>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-purple-500'} mb-3`}>{testimonial.university}</p>
-                    <p className={`${theme === 'dark' ? 'text-white/80' : 'text-purple-700'}`}>{testimonial.text}</p>
+                    <p className={`text-sm ${smallTextClass} mb-3`}>{testimonial.university}</p>
+                    <p className={`${smallTextClass}`}>{testimonial.text}</p>
                   </div>
                 </div>
               </Card>
@@ -610,6 +618,9 @@ const Index = () => {
 
         <section className="py-12">
           <Card className="bg-white p-12 shadow-2xl">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center text-purple-600 animate-title-wave">
+              О проекте
+            </h2>
             <p className="text-center mb-12 text-base md:text-lg leading-relaxed max-w-4xl mx-auto text-[#000000]">
               Проект создан при поддержке Федерального государственного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"
             </p>
