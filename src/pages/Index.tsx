@@ -10,6 +10,7 @@ const Index = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
   const [mapFilter, setMapFilter] = useState<'all' | 'universities' | 'dormitories' | 'places'>('all');
+  const [imageTransitioning, setImageTransitioning] = useState(false);
 
   const universities = [
     {
@@ -54,19 +55,27 @@ const Index = () => {
   });
 
   const nextImage = (universityIndex: number) => {
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [universityIndex]: (prev[universityIndex] + 1) % universities[universityIndex].images.length
-    }));
+    setImageTransitioning(true);
+    setTimeout(() => {
+      setCurrentImageIndex(prev => ({
+        ...prev,
+        [universityIndex]: (prev[universityIndex] + 1) % universities[universityIndex].images.length
+      }));
+      setTimeout(() => setImageTransitioning(false), 50);
+    }, 300);
   };
 
   const prevImage = (universityIndex: number) => {
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [universityIndex]: prev[universityIndex] === 0 
-        ? universities[universityIndex].images.length - 1 
-        : prev[universityIndex] - 1
-    }));
+    setImageTransitioning(true);
+    setTimeout(() => {
+      setCurrentImageIndex(prev => ({
+        ...prev,
+        [universityIndex]: prev[universityIndex] === 0 
+          ? universities[universityIndex].images.length - 1 
+          : prev[universityIndex] - 1
+      }));
+      setTimeout(() => setImageTransitioning(false), 50);
+    }, 300);
   };
 
   const features = [
@@ -281,16 +290,32 @@ const Index = () => {
               </button>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => scrollToSection('functions')} className={`${textClass} hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all duration-300 font-medium`}>
+              <button onClick={() => scrollToSection('functions')} className={`${textClass} transition-all duration-300 font-medium ${
+                theme === 'dark' 
+                  ? 'hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
+                  : 'hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]'
+              }`}>
                 Функции
               </button>
-              <button onClick={() => scrollToSection('benefits')} className={`${textClass} hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all duration-300 font-medium`}>
+              <button onClick={() => scrollToSection('benefits')} className={`${textClass} transition-all duration-300 font-medium ${
+                theme === 'dark' 
+                  ? 'hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
+                  : 'hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]'
+              }`}>
                 Преимущества
               </button>
-              <button onClick={() => scrollToSection('stickers')} className={`${textClass} hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all duration-300 font-medium`}>
+              <button onClick={() => scrollToSection('stickers')} className={`${textClass} transition-all duration-300 font-medium ${
+                theme === 'dark' 
+                  ? 'hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
+                  : 'hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]'
+              }`}>
                 Стикеры
               </button>
-              <button onClick={() => scrollToSection('reviews')} className={`${textClass} hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all duration-300 font-medium`}>
+              <button onClick={() => scrollToSection('reviews')} className={`${textClass} transition-all duration-300 font-medium ${
+                theme === 'dark' 
+                  ? 'hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
+                  : 'hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]'
+              }`}>
                 Отзывы
               </button>
               <a href="https://t.me/ZacenikaBot" target="_blank" rel="noopener noreferrer">
@@ -382,7 +407,7 @@ const Index = () => {
                   <img 
                     src={uni.images[currentImageIndex[idx]]} 
                     alt={uni.name}
-                    className="w-full h-full object-cover transition-opacity duration-500"
+                    className={`w-full h-full object-cover transition-opacity duration-500 ${imageTransitioning ? 'opacity-0' : 'opacity-100'}`}
                   />
                   <button
                     onClick={() => prevImage(idx)}
