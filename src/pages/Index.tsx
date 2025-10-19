@@ -27,7 +27,7 @@ const Index = () => {
       fullName: "Южный федеральный университет",
       url: "https://sfedu.ru",
       images: [
-        "https://cdn.poehali.dev/files/f88c71d9-053c-48bb-a965-e169e4ac3177.jpg",
+        "https://cdn.poehali.dev/files/08780390-77db-4dda-bee5-0fe6496e467c.jpg",
         "https://cdn.poehali.dev/files/b3753219-41c6-4bdb-a3a9-7c65fe5fd9c1.jpg",
         "https://cdn.poehali.dev/files/085b1910-2457-4454-a0ae-07a8c93217ca.jpg",
         "https://cdn.poehali.dev/files/56f97731-b83c-4f46-889f-59bf1f380250.jpg"
@@ -70,32 +70,32 @@ const Index = () => {
 
   const features = [
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/4669879d-fb3c-4e65-8750-ff1f0bea1a37.jpg",
       title: "Поиск жилья",
       description: "Найди квартиру или комнату для аренды рядом с университетом"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/f7581e72-1c3e-45a9-a910-9bf67fac6aa1.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/7cee3b13-0474-4f7b-8e53-6ed2468a644e.jpg",
       title: "Поиск соседа",
       description: "Найди соседа по комнате среди студентов твоего вуза"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/2135267d-39a8-4441-b8e8-e36ba5122c74.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/9610fc65-027f-4fe5-8193-5d2d049fb187.jpg",
       title: "Работа и подработка",
       description: "Вакансии и временные подработки специально для студентов"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/732e077c-b135-4fdb-ad1d-2da3fef214aa.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/eefe42af-e033-4983-9b94-b98f2513ca4e.jpg",
       title: "Расписание",
       description: "Доступ к актуальному учебному расписанию в одно касание"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/5fbffb17-ac95-4a32-87c3-e6b79a77e5c0.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/629139d6-a12b-4526-9db4-e4bb8c942d6d.jpg",
       title: "Виртуальные туры 360°",
       description: "Познакомься с университетом в онлайн формате"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/82ea371c-1bc5-4414-b263-700b84ff315d.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/47baf918-d86c-4cac-a02d-167f91332a5f.jpg",
       title: "Скидки и акции",
       description: "Эксклюзивные студенческие скидки и специальные предложения"
     },
@@ -118,22 +118,22 @@ const Index = () => {
 
   const benefits = [
     {
-      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3d8fd62d-c031-4694-ad67-81cffb90b7b6.jpg",
+      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/a44fb203-18b2-4c5c-88ee-0917bddea8be.jpg",
       title: "Всё в одном месте",
       description: "Не нужно искать информацию в разных источниках"
     },
     {
-      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/f7581e72-1c3e-45a9-a910-9bf67fac6aa1.jpg",
+      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/3e91bc5e-7f66-4d2d-a04e-76679f6fd30e.jpg",
       title: "Быстрый доступ",
       description: "Вся нужная информация всегда под рукой в Telegram"
     },
     {
-      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/2135267d-39a8-4441-b8e8-e36ba5122c74.jpg",
+      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/ce89ee93-f1c4-4b91-8647-10da906e9b45.jpg",
       title: "Общение",
       description: "Находи друзей и единомышленников прямо в боте"
     },
     {
-      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/732e077c-b135-4fdb-ad1d-2da3fef214aa.jpg",
+      emoji: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/e8dd6ef3-bcf4-44e4-81ba-cdd408ce6001.jpg",
       title: "Для студентов",
       description: "Создано студентами специально для студентов"
     }
@@ -163,25 +163,25 @@ const Index = () => {
       name: "Алина К.",
       university: "МГУ, 2 курс",
       text: "Нашла комнату через бота за 2 дня! Соседка оказалась с моего потока, теперь вместе ходим на пары",
-      avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
+      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/c96c95fe-20b4-40b0-8152-89312881a4ff.jpg"
     },
     {
       name: "Максим Р.",
       university: "СПбГУ, 3 курс",
       text: "AI-помощник реально выручает перед экзаменами. Объясняет лучше некоторых преподов, не шучу!",
-      avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
+      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/c96c95fe-20b4-40b0-8152-89312881a4ff.jpg"
     },
     {
       name: "Дарья М.",
       university: "МГТУ, 1 курс",
       text: "Виртуальный тур помог определиться с университетом ещё до поступления. Стикеры вообще огонь",
-      avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
+      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/c96c95fe-20b4-40b0-8152-89312881a4ff.jpg"
     },
     {
       name: "Игорь В.",
       university: "ВШЭ, 4 курс",
       text: "Подработку нашёл через бота, график гибкий, платят хорошо. Все вакансии проверенные, без скама",
-      avatar: "https://cdn.poehali.dev/files/cfd00d5e-cdb1-4e33-b17b-bf35a3a52e51.png"
+      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/c96c95fe-20b4-40b0-8152-89312881a4ff.jpg"
     }
   ];
 
@@ -276,25 +276,25 @@ const Index = () => {
               </button>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => scrollToSection('functions')} className={`${textClass} hover:text-purple-400 transition-colors font-medium`}>
+              <button onClick={() => scrollToSection('functions')} className={`${textClass} hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all duration-300 font-medium`}>
                 Функции
               </button>
-              <button onClick={() => scrollToSection('benefits')} className={`${textClass} hover:text-purple-400 transition-colors font-medium`}>
+              <button onClick={() => scrollToSection('benefits')} className={`${textClass} hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all duration-300 font-medium`}>
                 Преимущества
               </button>
-              <button onClick={() => scrollToSection('stickers')} className={`${textClass} hover:text-purple-400 transition-colors font-medium`}>
+              <button onClick={() => scrollToSection('stickers')} className={`${textClass} hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all duration-300 font-medium`}>
                 Стикеры
               </button>
-              <button onClick={() => scrollToSection('reviews')} className={`${textClass} hover:text-purple-400 transition-colors font-medium`}>
+              <button onClick={() => scrollToSection('reviews')} className={`${textClass} hover:text-purple-500 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all duration-300 font-medium`}>
                 Отзывы
               </button>
               <a href="https://t.me/ZacenikaBot" target="_blank" rel="noopener noreferrer">
                 <Button 
                   size="sm" 
-                  className={`font-bold rounded-full transition-all duration-500 animate-color-shift ${
+                  className={`font-bold rounded-full transition-colors duration-300 ${
                     theme === 'dark' 
                       ? 'bg-white text-purple-600 hover:bg-purple-50' 
-                      : 'bg-purple-600 text-white hover:bg-purple-700'
+                      : 'bg-purple-600 text-white hover:bg-purple-600 hover:text-white'
                   }`}
                 >
                   Открыть бота
@@ -310,7 +310,11 @@ const Index = () => {
           <div className={`inline-block mb-6 px-6 py-2 ${cardBgClass} rounded-full border`}>
             <span className={`${textClass} font-bold text-sm tracking-wider`}>ЭКОСИСТЕМА СЕРВИСОВ ДЛЯ СТУДЕНТОВ</span>
           </div>
-          <h1 className={`text-5xl md:text-7xl font-black mb-4 ${textClass} leading-tight drop-shadow-lg animate-title-wave`}>
+          <h1 className={`text-5xl md:text-7xl font-black mb-4 leading-tight drop-shadow-lg animate-title-wave ${
+            theme === 'dark' 
+              ? 'text-white' 
+              : 'bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 bg-clip-text text-transparent'
+          }`}>
             Самая трудная сессия<br />— это ЖИЗНЬ
           </h1>
           <p className={`md:text-3xl font-bold ${textClass} mb-6 drop-shadow-md italic text-2xl`}>
@@ -334,12 +338,35 @@ const Index = () => {
           </a>
         </section>
 
-        <section id="universities" className="py-16 scroll-mt-24">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
-            Виртуальные
+        <section id="functions" className="py-16 scroll-mt-24">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-white animate-title-wave">
+            Функции бота
           </h2>
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-title-wave`}>
-            ТУРЫ
+          <div className="grid md:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <Card 
+                key={index} 
+                className={`${cardBgClass} p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl group`}
+              >
+                <div className="flex flex-col items-center text-center">
+                  {feature.icon.startsWith('http') ? (
+                    <img src={feature.icon} alt={feature.title} className="w-16 h-16 object-cover rounded-2xl mb-4 shadow-lg" />
+                  ) : (
+                    <div className="p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                      <Icon name={feature.icon as any} size={32} className="text-white" />
+                    </div>
+                  )}
+                  <h3 className={`text-xl font-bold mb-2 ${textClass}`}>{feature.title}</h3>
+                  <p className={`${theme === 'dark' ? 'text-white/70' : 'text-purple-600'}`}>{feature.description}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="universities" className="py-16 scroll-mt-24">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-white animate-title-wave">
+            Виртуальный тур по университету
           </h2>
           <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-12 text-lg`}>
             По главным университетам Ростова-на-Дону
@@ -356,16 +383,29 @@ const Index = () => {
                   />
                   <button
                     onClick={() => prevImage(idx)}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg transition-all hover:scale-110"
                   >
-                    <Icon name="ChevronLeft" size={24} className="text-purple-600" />
+                    <Icon name="ChevronLeft" size={24} className="text-white" />
                   </button>
                   <button
                     onClick={() => nextImage(idx)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg transition-all hover:scale-110"
                   >
-                    <Icon name="ChevronRight" size={24} className="text-purple-600" />
+                    <Icon name="ChevronRight" size={24} className="text-white" />
                   </button>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {uni.images.map((_, imgIdx) => (
+                      <button
+                        key={imgIdx}
+                        onClick={() => setCurrentImageIndex(prev => ({ ...prev, [idx]: imgIdx }))}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          currentImageIndex[idx] === imgIdx 
+                            ? 'bg-white w-6' 
+                            : 'bg-white/50 hover:bg-white/75'
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
                 <div className="p-6 text-center">
                   <a 
@@ -374,7 +414,7 @@ const Index = () => {
                     rel="noopener noreferrer"
                     className="inline-block"
                   >
-                    <h3 className="text-2xl font-black text-white hover:text-purple-300 transition-colors mb-2">
+                    <h3 className={`text-2xl font-black ${theme === 'dark' ? 'text-white' : 'text-purple-600'} hover:text-purple-300 transition-colors mb-2`}>
                       {uni.name}
                     </h3>
                   </a>
@@ -388,10 +428,10 @@ const Index = () => {
         </section>
 
         <section id="map" className="py-16 scroll-mt-24">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-4 text-white animate-title-wave">
             Интерактивная карта
           </h2>
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-title-wave`}>
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-white animate-title-wave">
             РОСТОВА-НА-ДОНУ
           </h2>
           <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-12 text-lg`}>
@@ -399,9 +439,9 @@ const Index = () => {
           </p>
 
           <Card className={`${cardBgClass} p-4 overflow-hidden shadow-2xl`}>
-            <div className="relative w-full h-[600px] rounded-lg overflow-hidden">
+            <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
               <iframe
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3A7c8e5f5b8d9e4c6a9b1c2d3e4f5a6b7c&amp;source=constructor"
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3Adc8e5a3f1e2b4c6d9a8b7c6d5e4f3a2b&amp;source=constructor&amp;z=12&amp;ll=39.723098%2C47.222078"
                 width="100%"
                 height="100%"
                 frameBorder="0"
@@ -441,34 +481,10 @@ const Index = () => {
           </Card>
         </section>
 
-        <section id="functions" className="py-16 scroll-mt-24">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 ${textClass} animate-title-wave`}>
-            Функции бота
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <Card 
-                key={index} 
-                className={`${cardBgClass} p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl group`}
-              >
-                <div className="flex flex-col items-center text-center">
-                  {feature.icon.startsWith('http') ? (
-                    <img src={feature.icon} alt={feature.title} className="w-16 h-16 object-cover rounded-2xl mb-4 shadow-lg" />
-                  ) : (
-                    <div className="p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
-                      <Icon name={feature.icon as any} size={32} className="text-white" />
-                    </div>
-                  )}
-                  <h3 className={`text-xl font-bold mb-2 ${textClass}`}>{feature.title}</h3>
-                  <p className={`${theme === 'dark' ? 'text-white/70' : 'text-purple-600'}`}>{feature.description}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
+
 
         <section id="benefits" className="py-16 scroll-mt-24">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 ${textClass} animate-title-wave`}>
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-white animate-title-wave">
             Почему ЗаЦени?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -486,7 +502,7 @@ const Index = () => {
         </section>
 
         <section id="stickers" className="py-16 scroll-mt-24">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-4 ${textClass} animate-title-wave`}>
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-4 text-white animate-title-wave">
             Эксклюзивные стикеры
           </h2>
           <p className={`text-center ${theme === 'dark' ? 'text-white/70' : 'text-purple-600'} mb-12 text-lg`}>
@@ -522,8 +538,22 @@ const Index = () => {
           </div>
         </section>
 
+        <section className="py-16">
+          <div className="max-w-4xl mx-auto">
+            <Card className={`${cardBgClass} p-12 text-center relative overflow-hidden`}>
+              <div className="relative z-10">
+                <img 
+                  src="https://cdn.poehali.dev/files/1cc26ad5-ad7a-4e39-831d-9e31a221177a.png"
+                  alt="Стикеры бота" 
+                  className="w-full max-w-2xl mx-auto rounded-2xl shadow-2xl"
+                />
+              </div>
+            </Card>
+          </div>
+        </section>
+
         <section id="reviews" className="py-16 scroll-mt-24">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-12 ${textClass} animate-title-wave`}>
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-white animate-title-wave">
             Отзывы студентов
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -553,6 +583,9 @@ const Index = () => {
 
         <section className="py-16 text-center">
           <Card className={`${cardBgClass} p-12 shadow-2xl`}>
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-8 text-black">
+              О проекте
+            </h2>
             <h2 className={`text-4xl md:text-5xl font-black mb-6 ${textClass} animate-title-wave`}>
               Готов упростить студенческую жизнь?
             </h2>
