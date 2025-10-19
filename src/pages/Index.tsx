@@ -29,6 +29,7 @@ const Index = () => {
       url: "https://sfedu.ru",
       images: [
         "https://cdn.poehali.dev/files/2798458e-d19c-4dde-95b0-9f5612030816.jpg",
+        "https://cdn.poehali.dev/files/12d23679-f5fc-45ef-9d43-a802c31bd85a.jpg",
         "https://cdn.poehali.dev/files/085b1910-2457-4454-a0ae-07a8c93217ca.jpg",
         "https://cdn.poehali.dev/files/56f97731-b83c-4f46-889f-59bf1f380250.jpg"
       ]
@@ -311,6 +312,9 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-8 max-w-7xl pt-24">
         <section className="text-center py-16 md:py-24 animate-fade-in">
+          <div className={`inline-block mb-6 px-6 py-2 ${cardBgClass} rounded-full border`}>
+            <span className={`${textClass} font-bold text-sm tracking-wider`}>ЭКОСИСТЕМА СЕРВИСОВ ДЛЯ СТУДЕНТОВ</span>
+          </div>
           <h1 className={`text-5xl md:text-7xl font-black mb-4 leading-tight drop-shadow-lg animate-title-wave ${
             theme === 'dark' 
               ? 'text-white' 
@@ -588,9 +592,6 @@ const Index = () => {
 
         <section className="py-16 text-center">
           <Card className={`${cardBgClass} p-12 shadow-2xl`}>
-            <h2 className="text-4xl md:text-5xl font-black text-center mb-8 text-black">
-              О проекте
-            </h2>
             <h2 className={`text-4xl md:text-5xl font-black mb-6 ${textClass} animate-title-wave`}>
               Готов упростить студенческую жизнь?
             </h2>
@@ -615,7 +616,7 @@ const Index = () => {
 
         <section className="py-12">
           <Card className="bg-white p-12 shadow-2xl">
-            <h2 className="md:text-5xl font-black mb-8 text-center animate-title-wave text-[#000000] text-5xl">
+            <h2 className="md:text-5xl font-semibold mb-8 text-center animate-title-wave text-[#000000] text-5xl">
               О проекте
             </h2>
             <p className="text-center mb-12 text-base md:text-lg leading-relaxed max-w-4xl mx-auto text-[#000000]">
