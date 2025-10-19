@@ -311,9 +311,6 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-8 max-w-7xl pt-24">
         <section className="text-center py-16 md:py-24 animate-fade-in">
-          <div className={`inline-block mb-6 px-6 py-2 ${cardBgClass} rounded-full border`}>
-            <span className={`${textClass} font-bold text-sm tracking-wider`}>готов упростить студенческую жизнь?</span>
-          </div>
           <h1 className={`text-5xl md:text-7xl font-black mb-4 leading-tight drop-shadow-lg animate-title-wave ${
             theme === 'dark' 
               ? 'text-white' 
