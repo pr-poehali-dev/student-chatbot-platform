@@ -80,32 +80,32 @@ const Index = () => {
 
   const features = [
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/4669879d-fb3c-4e65-8750-ff1f0bea1a37.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/35d228bb-46c2-4b46-8fa6-b94859a464b0.jpg",
       title: "Поиск жилья",
       description: "Найди квартиру или комнату для аренды рядом с университетом"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/7cee3b13-0474-4f7b-8e53-6ed2468a644e.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/f5b36100-3ee1-4636-b123-17fedf43d195.jpg",
       title: "Поиск соседа",
       description: "Найди соседа по комнате среди студентов твоего вуза"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/9610fc65-027f-4fe5-8193-5d2d049fb187.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/9d6d27b7-29eb-48fa-8e4c-d53284dc9e3b.jpg",
       title: "Работа и подработка",
       description: "Вакансии и временные подработки специально для студентов"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/eefe42af-e033-4983-9b94-b98f2513ca4e.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/ea2a3ac0-08d8-4964-ac4b-b098b44c7607.jpg",
       title: "Расписание",
       description: "Доступ к актуальному учебному расписанию в одно касание"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/629139d6-a12b-4526-9db4-e4bb8c942d6d.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/53126132-172a-421d-bfff-d783c19ababe.jpg",
       title: "Виртуальные туры 360°",
       description: "Познакомься с университетом в онлайн формате"
     },
     {
-      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/47baf918-d86c-4cac-a02d-167f91332a5f.jpg",
+      icon: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/39cf1b50-ffaa-4536-a232-a362269de5eb.jpg",
       title: "Скидки и акции",
       description: "Эксклюзивные студенческие скидки и специальные предложения"
     },
