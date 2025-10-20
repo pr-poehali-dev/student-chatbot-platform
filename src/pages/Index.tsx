@@ -319,11 +319,11 @@ const Index = () => {
               <a href="https://t.me/ZacenikaBot" target="_blank" rel="noopener noreferrer">
                 <Button 
                   size="sm" 
-                  className={`font-bold rounded-full transition-all duration-300 ${
-                    theme === 'dark' 
-                      ? 'bg-white text-purple-600 hover:bg-purple-500 hover:text-white active:bg-purple-700 active:scale-95' 
-                      : 'bg-purple-600 text-white hover:bg-purple-500 active:bg-purple-800 active:scale-95'
-                  }`}
+                  className="font-bold rounded-full transition-all duration-300 bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 active:scale-95 shadow-lg hover:shadow-xl hover:shadow-purple-500/50"
+                  style={{
+                    boxShadow: '0 4px 14px 0 rgba(168, 85, 247, 0.4)',
+                    transform: 'translateY(-1px)'
+                  }}
                 >
                   Открыть бота
                 </Button>
