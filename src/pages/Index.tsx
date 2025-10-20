@@ -10,7 +10,11 @@ const Index = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
   const [mapFilter, setMapFilter] = useState<'all' | 'universities' | 'dormitories' | 'places'>('all');
-  const [imageTransitioning, setImageTransitioning] = useState(false);
+  const [imageTransitioning, setImageTransitioning] = useState<{ [key: number]: boolean }>({
+    0: false,
+    1: false,
+    2: false
+  });
 
   const universities = [
     {
@@ -55,18 +59,18 @@ const Index = () => {
   });
 
   const nextImage = (universityIndex: number) => {
-    setImageTransitioning(true);
+    setImageTransitioning(prev => ({ ...prev, [universityIndex]: true }));
     setTimeout(() => {
       setCurrentImageIndex(prev => ({
         ...prev,
         [universityIndex]: (prev[universityIndex] + 1) % universities[universityIndex].images.length
       }));
-      setTimeout(() => setImageTransitioning(false), 50);
+      setTimeout(() => setImageTransitioning(prev => ({ ...prev, [universityIndex]: false })), 50);
     }, 300);
   };
 
   const prevImage = (universityIndex: number) => {
-    setImageTransitioning(true);
+    setImageTransitioning(prev => ({ ...prev, [universityIndex]: true }));
     setTimeout(() => {
       setCurrentImageIndex(prev => ({
         ...prev,
@@ -74,7 +78,7 @@ const Index = () => {
           ? universities[universityIndex].images.length - 1 
           : prev[universityIndex] - 1
       }));
-      setTimeout(() => setImageTransitioning(false), 50);
+      setTimeout(() => setImageTransitioning(prev => ({ ...prev, [universityIndex]: false })), 50);
     }, 300);
   };
 
@@ -401,7 +405,9 @@ const Index = () => {
                   <img 
                     src={uni.images[currentImageIndex[idx]]} 
                     alt={uni.name}
-                    className="w-full h-full object-cover transition-opacity duration-500"
+                    className={`w-full h-full object-cover transition-opacity duration-500 ${
+                      imageTransitioning[idx] ? 'opacity-0' : 'opacity-100'
+                    }`}
                   />
                   <button
                     onClick={() => prevImage(idx)}
