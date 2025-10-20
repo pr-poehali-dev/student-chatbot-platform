@@ -407,7 +407,7 @@ const Index = () => {
                   <img 
                     src={uni.images[currentImageIndex[idx]]} 
                     alt={uni.name}
-                    className={`w-full h-full object-cover transition-opacity duration-500 ${imageTransitioning ? 'opacity-0' : 'opacity-100'}`}
+                    className="w-full h-full object-cover transition-opacity duration-500"
                   />
                   <button
                     onClick={() => prevImage(idx)}
