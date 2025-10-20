@@ -442,7 +442,7 @@ const Index = () => {
                     rel="noopener noreferrer"
                     className="inline-block"
                   >
-                    <h3 className={`text-2xl font-black ${theme === 'dark' ? 'text-white' : 'text-purple-600'} hover:text-purple-300 transition-colors mb-2`}>
+                    <h3 className={`text-2xl font-black ${theme === 'dark' ? 'text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'text-purple-600 hover:text-purple-300'} transition-all mb-2`}>
                       {uni.name}
                     </h3>
                   </a>
