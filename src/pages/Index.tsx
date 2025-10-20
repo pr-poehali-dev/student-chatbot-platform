@@ -228,13 +228,7 @@ const Index = () => {
       const currentScrollY = window.scrollY;
       
       setShowScrollTop(currentScrollY > 400);
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setShowMenu(false);
-      } else {
-        setShowMenu(true);
-      }
-      
+      setShowMenu(true);
       setLastScrollY(currentScrollY);
 
       if (scrollTimeout) {
@@ -243,7 +237,7 @@ const Index = () => {
 
       const timeout = setTimeout(() => {
         setShowMenu(false);
-      }, 3000);
+      }, 10000);
 
       setScrollTimeout(timeout);
     };
