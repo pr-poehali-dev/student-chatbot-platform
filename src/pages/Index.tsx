@@ -590,11 +590,11 @@ const Index = () => {
                 className={`${cardBgClass} p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl`}
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center flex-shrink-0">
                     <img 
                       src={testimonial.avatar} 
                       alt={testimonial.name}
-                      className="w-20 h-20"
+                      className="w-12 h-12"
                     />
                   </div>
                   <div className="flex-1">
