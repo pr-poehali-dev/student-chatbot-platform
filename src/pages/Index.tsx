@@ -313,8 +313,8 @@ const Index = () => {
                   size="sm" 
                   className={`font-bold rounded-full transition-all duration-300 ${
                     theme === 'dark' 
-                      ? 'bg-white text-purple-600 hover:bg-purple-500 hover:text-white active:bg-purple-700 active:scale-95' 
-                      : 'bg-purple-600 text-white hover:bg-purple-500 active:bg-purple-800 active:scale-95'
+                      ? 'bg-white text-purple-600 hover:bg-yellow-400 hover:text-black active:bg-yellow-500 active:scale-95' 
+                      : 'bg-purple-600 text-white hover:bg-yellow-400 hover:text-black active:bg-yellow-500 active:scale-95'
                   }`}
                 >
                   Открыть бота
