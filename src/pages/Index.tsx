@@ -177,25 +177,25 @@ const Index = () => {
       name: "Алина К.",
       university: "МГУ, 2 курс",
       text: "Нашла комнату через бота за 2 дня! Соседка оказалась с моего потока, теперь вместе ходим на пары",
-      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/c96c95fe-20b4-40b0-8152-89312881a4ff.jpg"
+      avatar: "https://cdn.poehali.dev/files/3ec5229c-ea97-4771-9895-f0bd2d8ec472.png"
     },
     {
       name: "Максим Р.",
       university: "СПбГУ, 3 курс",
       text: "AI-помощник реально выручает перед экзаменами. Объясняет лучше некоторых преподов, не шучу!",
-      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/c96c95fe-20b4-40b0-8152-89312881a4ff.jpg"
+      avatar: "https://cdn.poehali.dev/files/3ec5229c-ea97-4771-9895-f0bd2d8ec472.png"
     },
     {
       name: "Дарья М.",
       university: "МГТУ, 1 курс",
       text: "Виртуальный тур помог определиться с университетом ещё до поступления. Стикеры вообще огонь",
-      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/c96c95fe-20b4-40b0-8152-89312881a4ff.jpg"
+      avatar: "https://cdn.poehali.dev/files/3ec5229c-ea97-4771-9895-f0bd2d8ec472.png"
     },
     {
       name: "Игорь В.",
       university: "ВШЭ, 4 курс",
       text: "Подработку нашёл через бота, график гибкий, платят хорошо. Все вакансии проверенные, без скама",
-      avatar: "https://cdn.poehali.dev/projects/62575a67-7810-4b1f-b202-5c98c8b37b75/files/c96c95fe-20b4-40b0-8152-89312881a4ff.jpg"
+      avatar: "https://cdn.poehali.dev/files/3ec5229c-ea97-4771-9895-f0bd2d8ec472.png"
     }
   ];
 
