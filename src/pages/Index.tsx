@@ -460,9 +460,6 @@ const Index = () => {
                 className="rounded-lg"
                 title="Карта Ростова-на-Дону для студентов"
               />
-              <div className="absolute top-1/4 left-1/3 w-3 h-3 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"></div>
-              <div className="absolute top-1/2 left-1/2 w-3 h-3 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"></div>
-              <div className="absolute top-2/3 right-1/3 w-3 h-3 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"></div>
             </div>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
               <button
