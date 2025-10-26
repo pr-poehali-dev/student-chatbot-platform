@@ -59,27 +59,19 @@ const Index = () => {
   });
 
   const nextImage = (universityIndex: number) => {
-    setImageTransitioning(prev => ({ ...prev, [universityIndex]: true }));
-    setTimeout(() => {
-      setCurrentImageIndex(prev => ({
-        ...prev,
-        [universityIndex]: (prev[universityIndex] + 1) % universities[universityIndex].images.length
-      }));
-      setTimeout(() => setImageTransitioning(prev => ({ ...prev, [universityIndex]: false })), 50);
-    }, 300);
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [universityIndex]: (prev[universityIndex] + 1) % universities[universityIndex].images.length
+    }));
   };
 
   const prevImage = (universityIndex: number) => {
-    setImageTransitioning(prev => ({ ...prev, [universityIndex]: true }));
-    setTimeout(() => {
-      setCurrentImageIndex(prev => ({
-        ...prev,
-        [universityIndex]: prev[universityIndex] === 0 
-          ? universities[universityIndex].images.length - 1 
-          : prev[universityIndex] - 1
-      }));
-      setTimeout(() => setImageTransitioning(prev => ({ ...prev, [universityIndex]: false })), 50);
-    }, 300);
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [universityIndex]: prev[universityIndex] === 0 
+        ? universities[universityIndex].images.length - 1 
+        : prev[universityIndex] - 1
+    }));
   };
 
   const features = [
@@ -405,9 +397,7 @@ const Index = () => {
                   <img 
                     src={uni.images[currentImageIndex[idx]]} 
                     alt={uni.name}
-                    className={`w-full h-full object-cover transition-opacity duration-500 ${
-                      imageTransitioning[idx] ? 'opacity-0' : 'opacity-100'
-                    }`}
+                    className="w-full h-full object-cover"
                   />
                   <button
                     onClick={() => prevImage(idx)}
@@ -470,6 +460,9 @@ const Index = () => {
                 className="rounded-lg"
                 title="Карта Ростова-на-Дону для студентов"
               />
+              <div className="absolute top-1/4 left-1/3 w-3 h-3 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"></div>
+              <div className="absolute top-1/2 left-1/2 w-3 h-3 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"></div>
+              <div className="absolute top-2/3 right-1/3 w-3 h-3 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"></div>
             </div>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
               <button
@@ -597,11 +590,11 @@ const Index = () => {
                 className={`${cardBgClass} p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl`}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center flex-shrink-0 ring-2 ring-white">
                     <img 
                       src={testimonial.avatar} 
                       alt={testimonial.name}
-                      className="w-12 h-12"
+                      className="w-20 h-20"
                     />
                   </div>
                   <div className="flex-1">
