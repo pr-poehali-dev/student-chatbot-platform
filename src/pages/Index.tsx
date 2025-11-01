@@ -453,7 +453,7 @@ const Index = () => {
           <Card className={`${cardBgClass} p-4 overflow-hidden shadow-2xl`}>
             <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
               <iframe
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3A30c8eb9a1f2d4e5b6c7a8d9e0f1a2b3c&amp;source=constructor&amp;z=12&amp;ll=39.723098%2C47.222078"
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A7d3ea39ec376f10c2e7834f320dcb40490d9c21c8a4e4a6608b1e2591752bedb&amp;source=constructor"
                 width="100%"
                 height="100%"
                 frameBorder="0"
