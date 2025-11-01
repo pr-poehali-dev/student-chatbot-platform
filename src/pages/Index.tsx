@@ -10,6 +10,7 @@ const Index = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
   const [mapFilter, setMapFilter] = useState<'all' | 'universities' | 'dormitories' | 'places'>('all');
+  const [mapUrl, setMapUrl] = useState('https://yandex.ru/map-widget/v1/?um=constructor%3A7d3ea39ec376f10c2e7834f320dcb40490d9c21c8a4e4a6608b1e2591752bedb&source=constructor');
   const [imageTransitioning, setImageTransitioning] = useState<{ [key: number]: boolean }>({
     0: false,
     1: false,
@@ -453,7 +454,8 @@ const Index = () => {
           <Card className={`${cardBgClass} p-4 overflow-hidden shadow-2xl`}>
             <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
               <iframe
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3A7d3ea39ec376f10c2e7834f320dcb40490d9c21c8a4e4a6608b1e2591752bedb&amp;source=constructor"
+                key={mapUrl}
+                src={mapUrl}
                 width="100%"
                 height="100%"
                 frameBorder="0"
@@ -463,7 +465,10 @@ const Index = () => {
             </div>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
               <button
-                onClick={() => setMapFilter('universities')}
+                onClick={() => {
+                  setMapFilter('universities');
+                  setMapUrl('https://yandex.ru/map-widget/v1/?um=constructor%3A7d3ea39ec376f10c2e7834f320dcb40490d9c21c8a4e4a6608b1e2591752bedb&source=constructor&ll=39.711889%2C47.234417&z=17');
+                }}
                 className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
                   mapFilter === 'universities'
                     ? theme === 'dark'
@@ -480,7 +485,10 @@ const Index = () => {
                 </div>
               </button>
               <button
-                onClick={() => setMapFilter('dormitories')}
+                onClick={() => {
+                  setMapFilter('dormitories');
+                  setMapUrl('https://yandex.ru/map-widget/v1/?um=constructor%3A7d3ea39ec376f10c2e7834f320dcb40490d9c21c8a4e4a6608b1e2591752bedb&source=constructor');
+                }}
                 className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
                   mapFilter === 'dormitories'
                     ? theme === 'dark'
@@ -497,7 +505,10 @@ const Index = () => {
                 </div>
               </button>
               <button
-                onClick={() => setMapFilter('places')}
+                onClick={() => {
+                  setMapFilter('places');
+                  setMapUrl('https://yandex.ru/map-widget/v1/?um=constructor%3A7d3ea39ec376f10c2e7834f320dcb40490d9c21c8a4e4a6608b1e2591752bedb&source=constructor');
+                }}
                 className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
                   mapFilter === 'places'
                     ? theme === 'dark'
