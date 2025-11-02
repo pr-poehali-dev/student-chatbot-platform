@@ -598,11 +598,11 @@ const Index = () => {
                 className={`${cardBgClass} p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl`}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center flex-shrink-0">
+                  <div className="flex-shrink-0">
                     <img 
-                      src={testimonial.avatar} 
+                      src="https://cdn.poehali.dev/files/36f00450-f117-4152-a529-c7804b252cee.png"
                       alt={testimonial.name}
-                      className="w-12 h-12"
+                      className="w-16 h-16"
                     />
                   </div>
                   <div className="flex-1">
