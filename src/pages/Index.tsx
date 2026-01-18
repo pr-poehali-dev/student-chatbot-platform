@@ -645,9 +645,7 @@ const Index = () => {
             <h2 className="md:text-4xl font-semibold mb-8 text-center animate-title-wave text-[#000000] text-2xl">
               О проекте
             </h2>
-            <p className="text-center mb-12 text-base md:text-lg leading-relaxed max-w-4xl mx-auto text-[#000000]">
-              Проект создан при поддержке Федерального государственного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"
-            </p>
+            <p className="text-center mb-12 text-base md:text-lg leading-relaxed max-w-4xl mx-auto text-[#000000]">Проект создан при поддержке Федерального государственного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере" в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"</p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-12">
               <a 
                 href="https://fasie.ru" 
